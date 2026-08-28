@@ -1,0 +1,215 @@
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 1000;
+
+  width: 100%;
+  height: 70px;
+
+  padding: 0 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+
+  color: #f6f1e8;
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  text-decoration: none;
+
+  pointer-events: auto;
+}
+
+.nav-logo img {
+  display: block;
+
+  width: 34px;
+  height: 34px;
+
+  object-fit: contain;
+
+  filter: brightness(0) invert(1);
+
+  transition: transform 0.3s ease;
+}
+
+.nav-logo:hover img {
+  transform: scale(1.08);
+}
+
+
+/* =========================================
+   NAV LINKS
+========================================= */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+
+  gap: 34px;
+
+  pointer-events: auto;
+}
+
+.nav-links a {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+
+  color: #f6f1e8;
+
+  text-decoration: none;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  opacity: 1;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* underline animation */
+
+.nav-links a::after {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  bottom: -6px;
+
+  width: 0;
+  height: 1px;
+
+  background: #f6f1e8;
+
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.75;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+
+/* =========================================
+   MOBILE MENU BUTTON
+========================================= */
+
+.menu-toggle {
+  display: none;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  .navbar {
+    height: 65px;
+    padding: 0 28px;
+  }
+
+  .nav-links {
+    gap: 26px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .navbar {
+    height: 60px;
+    padding: 0 20px;
+  }
+
+  .nav-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nav-logo img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+
+    border: 1px solid rgba(246, 241, 232, 0.6);
+    border-radius: 50%;
+
+    background: transparent;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    cursor: pointer;
+
+    pointer-events: auto;
+  }
+
+  .menu-toggle span {
+    width: 13px;
+    height: 1px;
+
+    background: #f6f1e8;
+
+    transition: transform 0.3s ease;
+  }
+}
