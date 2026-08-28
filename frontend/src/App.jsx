@@ -1,8 +1,10 @@
+import Opening from './components/Opening';
+
 function App() {
   return (
-    <div>
-      <h1>U-Cafe</h1>
-    </div>
+    <>
+      <Opening />
+    </>
   );
 }
 
