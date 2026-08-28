@@ -1,0 +1,339 @@
+.categories {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 120px 5vw 140px;
+
+  background: var(--cream);
+  color: var(--black);
+
+  overflow: hidden;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.categories-header {
+  max-width: 700px;
+
+  margin: 0 auto 70px;
+
+  text-align: center;
+}
+
+.categories-header p {
+  margin-bottom: 12px;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+
+  color: var(--dark-green);
+}
+
+.categories-header h2 {
+  margin: 0;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 500;
+
+  line-height: 0.85;
+}
+
+.categories-header h2 span {
+  color: var(--dark-green);
+  font-style: italic;
+}
+
+.categories-header > span {
+  display: block;
+
+  margin-top: 20px;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+
+  letter-spacing: 0.08em;
+
+  opacity: 0.65;
+}
+
+.categories-line {
+  width: 45px;
+  height: 1px;
+
+  margin: 25px auto 0;
+
+  background: var(--coffee-brown);
+}
+
+
+/* =========================
+   GRID
+========================= */
+
+.categories-grid {
+  width: 100%;
+  max-width: 1300px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(12, 1fr);
+
+  grid-template-rows: 330px 330px;
+
+  gap: 18px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.category-card {
+  position: relative;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  border-radius: 2px;
+}
+
+
+/* FOOD */
+
+.category-1 {
+  grid-column: span 7;
+  grid-row: span 2;
+}
+
+
+/* DESSERT */
+
+.category-2 {
+  grid-column: span 5;
+}
+
+
+/* BEVERAGES */
+
+.category-3 {
+  grid-column: span 5;
+}
+
+
+/* SHISHA */
+
+.category-4 {
+  grid-column: span 4;
+}
+
+
+/* OTHERS */
+
+.category-5 {
+  grid-column: span 8;
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.category-card img {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.8s ease;
+}
+
+.category-card:hover img {
+  transform: scale(1.07);
+}
+
+
+/* =========================
+   OVERLAY
+========================= */
+
+.category-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(12, 35, 22, 0.85),
+      rgba(12, 35, 22, 0.05) 65%
+    );
+
+  transition: background 0.5s ease;
+}
+
+.category-card:hover .category-overlay {
+  background:
+    linear-gradient(
+      to top,
+      rgba(12, 35, 22, 0.9),
+      rgba(12, 35, 22, 0.25)
+    );
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.category-content {
+  position: absolute;
+
+  inset: 0;
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  color: #f6f1e8;
+}
+
+.category-number {
+  align-self: flex-end;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+
+  opacity: 0.8;
+}
+
+.category-bottom {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.category-bottom h3 {
+  margin: 0;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: clamp(2.5rem, 4vw, 4.5rem);
+  font-weight: 500;
+
+  line-height: 0.85;
+
+  text-transform: uppercase;
+}
+
+.category-arrow {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(246, 241, 232, 0.65);
+  border-radius: 50%;
+
+  font-size: 18px;
+
+  opacity: 0;
+
+  transform: translateY(10px);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    background 0.35s ease,
+    color 0.35s ease;
+}
+
+.category-card:hover .category-arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.category-arrow:hover {
+  background: #f6f1e8;
+  color: var(--dark-green);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .categories {
+    padding: 90px 18px 100px;
+  }
+
+  .categories-header {
+    margin-bottom: 45px;
+  }
+
+  .categories-header h2 {
+    font-size: 4.2rem;
+  }
+
+  .categories-grid {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .category-card {
+    width: 100%;
+    height: 330px;
+  }
+
+  .category-1 {
+    height: 390px;
+  }
+
+  .category-bottom h3 {
+    font-size: 3rem;
+  }
+
+  .category-arrow {
+    width: 38px;
+    height: 38px;
+
+    opacity: 1;
+    transform: none;
+  }
+}

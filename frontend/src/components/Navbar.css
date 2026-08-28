@@ -22,7 +22,29 @@
 
   color: #f6f1e8;
 
+  background: transparent;
+
   pointer-events: none;
+
+  transition:
+    background 0.45s ease,
+    box-shadow 0.45s ease,
+    color 0.45s ease;
+}
+
+
+/* =========================================
+   SCROLLED NAVBAR
+========================================= */
+
+.navbar.navbar-scrolled {
+  background: rgba(246, 241, 232, 0.94);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+
+  color: #1e5631;
 }
 
 
@@ -41,6 +63,8 @@
   text-decoration: none;
 
   pointer-events: auto;
+
+  flex-shrink: 0;
 }
 
 .nav-logo img {
@@ -51,13 +75,29 @@
 
   object-fit: contain;
 
+  /*
+    Default:
+    WHITE logo over Opening image
+  */
   filter: brightness(0) invert(1);
 
-  transition: transform 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    filter 0.45s ease;
 }
 
 .nav-logo:hover img {
   transform: scale(1.08);
+}
+
+
+/*
+   When scrolled:
+   return to original logo colors
+*/
+
+.navbar.navbar-scrolled .nav-logo img {
+  filter: none;
 }
 
 
@@ -96,12 +136,23 @@
   opacity: 1;
 
   transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+    color 0.45s ease,
+    opacity 0.3s ease;
 }
 
 
-/* underline animation */
+/*
+   Scrolled links
+*/
+
+.navbar.navbar-scrolled .nav-links a {
+  color: #1e5631;
+}
+
+
+/* =========================================
+   UNDERLINE
+========================================= */
 
 .nav-links a::after {
   content: '';
@@ -114,13 +165,13 @@
   width: 0;
   height: 1px;
 
-  background: #f6f1e8;
+  background: currentColor;
 
   transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-  opacity: 0.75;
+  opacity: 0.65;
 }
 
 .nav-links a:hover::after {
@@ -145,6 +196,7 @@
 
   .navbar {
     height: 65px;
+
     padding: 0 28px;
   }
 
@@ -162,6 +214,7 @@
 
   .navbar {
     height: 60px;
+
     padding: 0 20px;
   }
 
@@ -187,7 +240,8 @@
 
     padding: 0;
 
-    border: 1px solid rgba(246, 241, 232, 0.6);
+    border: 1px solid rgb(250, 249, 248);
+
     border-radius: 50%;
 
     background: transparent;
@@ -202,6 +256,10 @@
     cursor: pointer;
 
     pointer-events: auto;
+
+    transition:
+      border-color 0.45s ease,
+      background 0.45s ease;
   }
 
   .menu-toggle span {
@@ -210,6 +268,21 @@
 
     background: #f6f1e8;
 
-    transition: transform 0.3s ease;
+    transition: background 0.45s ease;
+  }
+
+
+  /*
+     Mobile after scroll
+  */
+
+  .navbar.navbar-scrolled .menu-toggle {
+    border-color: rgba(30, 86, 49, 0.45);
+
+    background: rgba(30, 86, 49, 0.04);
+  }
+
+  .navbar.navbar-scrolled .menu-toggle span {
+    background: #1e5631;
   }
 }

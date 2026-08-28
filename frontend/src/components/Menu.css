@@ -1,0 +1,682 @@
+/* =========================================
+   U-CAFE MENU PAGE
+========================================= */
+
+.menu-page {
+  min-height: 100vh;
+
+  padding: 120px 6vw 100px;
+
+  background: var(--cream);
+  color: var(--dark-green);
+
+  box-sizing: border-box;
+
+  position: relative;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.menu-back {
+  border: none;
+  background: transparent;
+
+  padding: 0;
+
+  color: var(--dark-green);
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.menu-back:hover {
+  transform: translateX(-5px);
+  opacity: 0.55;
+}
+
+
+/* =========================================
+   MENU HEADER
+========================================= */
+
+.menu-page-header {
+  margin-top: 55px;
+
+  text-align: center;
+}
+
+.menu-page-header > span {
+  display: block;
+
+  color: var(--coffee-brown);
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.3em;
+
+  text-transform: uppercase;
+
+  opacity: 0.75;
+}
+
+.menu-page-header h1 {
+  margin: 18px 0 0;
+
+  color: var(--dark-green);
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: clamp(5rem, 12vw, 10rem);
+
+  font-weight: 500;
+
+  line-height: 0.78;
+
+  text-transform: uppercase;
+
+  letter-spacing: -0.035em;
+}
+
+
+/* =========================================
+   TITLE DECORATION
+========================================= */
+
+.menu-title-line {
+  position: relative;
+
+  width: 45px;
+  height: 1px;
+
+  margin: 35px auto 0;
+
+  background: var(--coffee-brown);
+}
+
+.menu-title-line::before,
+.menu-title-line::after {
+  content: '';
+
+  position: absolute;
+
+  top: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  border: 1px solid var(--coffee-brown);
+
+  border-radius: 50%;
+
+  transform: translateY(-50%);
+}
+
+.menu-title-line::before {
+  left: -12px;
+}
+
+.menu-title-line::after {
+  right: -12px;
+}
+
+
+/* =========================================
+   SUBCATEGORY FILTERS
+========================================= */
+
+.menu-filters {
+  max-width: 1000px;
+
+  margin: 65px auto 60px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+
+/* =========================================
+   SUBCATEGORY PILL
+========================================= */
+
+.menu-filter {
+  position: relative;
+
+  padding: 12px 22px;
+
+  border: 1px solid rgba(112, 69, 31, 0.28);
+
+  border-radius: 999px;
+
+  background: transparent;
+
+  color: var(--dark-green);
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    color 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* small shine layer */
+
+.menu-filter::before {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  transform: skewX(-20deg);
+
+  transition: left 0.5s ease;
+
+  pointer-events: none;
+}
+
+.menu-filter:hover::before {
+  left: 120%;
+}
+
+
+/* hover */
+
+.menu-filter:hover {
+  border-color: var(--coffee-brown);
+
+  color: var(--coffee-brown);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 5px 15px rgba(112, 69, 31, 0.08);
+}
+
+
+/* active */
+
+.menu-filter.active {
+  background: var(--dark-green);
+
+  border-color: var(--dark-green);
+
+  color: var(--cream);
+
+  box-shadow:
+    0 8px 20px rgba(23, 61, 39, 0.14);
+}
+
+
+/* active hover */
+
+.menu-filter.active:hover {
+  background: var(--coffee-brown);
+
+  border-color: var(--coffee-brown);
+
+  color: var(--cream);
+
+  box-shadow:
+    0 8px 20px rgba(112, 69, 31, 0.16);
+}
+
+
+/* =========================================
+   ITEMS CONTAINER
+========================================= */
+
+.menu-items {
+  max-width: 1000px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   ITEMS HEADER
+========================================= */
+
+.items-heading {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid rgba(112, 69, 31, 0.30);
+
+  color: var(--dark-green);
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+
+  opacity: 0.75;
+}
+
+.items-heading span:first-child {
+  color: var(--coffee-brown);
+}
+
+
+/* =========================================
+   ITEMS LIST
+========================================= */
+
+.items-list {
+  width: 100%;
+}
+
+
+/* =========================================
+   SINGLE ITEM
+========================================= */
+
+.menu-item {
+  display: grid;
+
+  grid-template-columns: 50px 1fr auto;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 24px 5px;
+
+  border-bottom: 1px solid rgba(23, 61, 39, 0.14);
+
+  color: var(--dark-green);
+
+  transition:
+    padding 0.3s ease,
+    background 0.3s ease;
+}
+
+
+/* hover */
+
+.menu-item:hover {
+  padding-left: 15px;
+
+  background: rgba(112, 69, 31, 0.045);
+}
+
+
+/* item number */
+
+.item-number {
+  color: var(--coffee-brown);
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+
+  font-size: 9px;
+
+  letter-spacing: 0.08em;
+
+  opacity: 0.55;
+}
+
+
+/* item name */
+
+.menu-item h3 {
+  margin: 0;
+
+  color: var(--dark-green);
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 2rem;
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  text-transform: uppercase;
+
+  transition:
+    color 0.3s ease;
+}
+
+.menu-item:hover h3 {
+  color: var(--coffee-brown);
+}
+
+
+/* price */
+
+.menu-item strong {
+  color: var(--coffee-brown);
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================================
+   SUBTLE ITEM ANIMATION
+========================================= */
+
+.menu-item h3,
+.menu-item strong,
+.item-number {
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.menu-item:hover .item-number {
+  opacity: 0.8;
+
+  transform: translateX(3px);
+}
+
+.menu-item:hover strong {
+  transform: translateX(-3px);
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.menu-empty {
+  padding: 80px 20px;
+
+  text-align: center;
+
+  color: var(--dark-green);
+}
+
+.menu-empty span {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: var(--coffee-brown);
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.25em;
+
+  text-transform: uppercase;
+}
+
+.menu-empty p {
+  margin: 0;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 2rem;
+
+  opacity: 0.55;
+}
+
+
+/* =========================================
+   DESKTOP LARGE
+========================================= */
+
+@media (min-width: 1200px) {
+
+  .menu-page {
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+
+  .menu-filters {
+    margin-top: 75px;
+  }
+
+  .menu-item {
+    padding-top: 27px;
+    padding-bottom: 27px;
+  }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  .menu-page {
+    padding: 105px 5vw 90px;
+  }
+
+  .menu-page-header {
+    margin-top: 50px;
+  }
+
+  .menu-page-header h1 {
+    font-size: clamp(4.5rem, 14vw, 8rem);
+  }
+
+  .menu-filters {
+    margin-top: 60px;
+    margin-bottom: 55px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .menu-page {
+    min-height: 100svh;
+
+    padding: 90px 20px 80px;
+  }
+
+
+  /* back */
+
+  .menu-back {
+    font-size: 9px;
+
+    letter-spacing: 0.16em;
+  }
+
+
+  /* header */
+
+  .menu-page-header {
+    margin-top: 48px;
+  }
+
+  .menu-page-header > span {
+    font-size: 8px;
+
+    letter-spacing: 0.25em;
+  }
+
+  .menu-page-header h1 {
+    margin-top: 15px;
+
+    font-size: clamp(4.2rem, 22vw, 6rem);
+
+    letter-spacing: -0.04em;
+  }
+
+  .menu-title-line {
+    margin-top: 28px;
+  }
+
+
+  /* filters */
+
+  .menu-filters {
+    margin: 55px auto 45px;
+
+    gap: 8px;
+  }
+
+  .menu-filter {
+    padding: 10px 16px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.05em;
+  }
+
+
+  /* items */
+
+  .items-heading {
+    padding-bottom: 14px;
+
+    font-size: 7px;
+
+    letter-spacing: 0.15em;
+  }
+
+  .menu-item {
+    grid-template-columns: 28px 1fr auto;
+
+    gap: 9px;
+
+    padding: 19px 0;
+  }
+
+  .item-number {
+    font-size: 8px;
+  }
+
+  .menu-item h3 {
+    font-size: 1.45rem;
+
+    line-height: 1.05;
+  }
+
+  .menu-item strong {
+    font-size: 10px;
+  }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 420px) {
+
+  .menu-page {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .menu-page-header h1 {
+    font-size: 4rem;
+  }
+
+  .menu-filter {
+    padding: 9px 13px;
+
+    font-size: 8px;
+  }
+
+  .menu-item h3 {
+    font-size: 1.3rem;
+  }
+
+  .menu-item strong {
+    font-size: 9px;
+  }
+
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.menu-filter:focus-visible,
+.menu-back:focus-visible {
+  outline: 1px solid var(--coffee-brown);
+
+  outline-offset: 4px;
+}
+
+
+/* =========================================
+   REDUCE MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .menu-filter,
+  .menu-item,
+  .menu-back,
+  .menu-filter::before,
+  .menu-item h3,
+  .menu-item strong,
+  .item-number {
+    transition: none;
+  }
+}
