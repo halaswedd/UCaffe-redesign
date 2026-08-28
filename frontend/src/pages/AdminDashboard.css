@@ -25,15 +25,17 @@
   display: flex;
   flex-direction: column;
 
-  background: #1e5631;
+  background: linear-gradient(160deg, #1e5631 0%, #163f24 100%);
   color: #f6f1e8;
+
+  box-shadow: 4px 0 30px rgba(23, 61, 39, 0.15);
 }
 
 
 .dashboard-logo {
   padding-bottom: 35px;
 
-  border-bottom: 1px solid rgba(246, 241, 232, 0.2);
+  border-bottom: 1px solid rgba(246, 241, 232, 0.15);
 }
 
 .dashboard-logo span {
@@ -41,7 +43,7 @@
 
   font-family: "Cormorant Garamond", serif;
 
-  font-size: 40px;
+  font-size: 42px;
 
   line-height: 0.8;
 
@@ -56,9 +58,9 @@
   font-size: 7px;
   font-weight: 600;
 
-  letter-spacing: 0.25em;
+  letter-spacing: 0.3em;
 
-  opacity: 0.6;
+  opacity: 0.55;
 }
 
 
@@ -70,13 +72,13 @@
   display: flex;
   flex-direction: column;
 
-  gap: 7px;
+  gap: 4px;
 }
 
 .dashboard-nav-item {
   width: 100%;
 
-  padding: 15px 12px;
+  padding: 15px 14px;
 
   display: flex;
   align-items: center;
@@ -84,6 +86,7 @@
   gap: 17px;
 
   border: none;
+  border-radius: 8px;
 
   background: transparent;
   color: rgba(246, 241, 232, 0.55);
@@ -108,11 +111,20 @@
   opacity: 0.5;
 }
 
-.dashboard-nav-item:hover,
-.dashboard-nav-item.active {
-  background: rgba(246, 241, 232, 0.1);
+.dashboard-nav-item:hover {
+  background: rgba(246, 241, 232, 0.08);
 
   color: #f6f1e8;
+
+  padding-left: 18px;
+}
+
+.dashboard-nav-item.active {
+  background: rgba(246, 241, 232, 0.14);
+
+  color: #f6f1e8;
+
+  box-shadow: inset 2px 0 0 #f6f1e8;
 }
 
 .dashboard-nav-item.active span {
@@ -129,9 +141,10 @@
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   border: none;
-  border-top: 1px solid rgba(246, 241, 232, 0.2);
+  border-top: 1px solid rgba(246, 241, 232, 0.15);
 
   background: transparent;
   color: #f6f1e8;
@@ -144,6 +157,12 @@
   font-weight: 700;
 
   letter-spacing: 0.2em;
+
+  transition: opacity 0.3s ease;
+}
+
+.dashboard-logout:hover {
+  opacity: 0.7;
 }
 
 .dashboard-logout b {
@@ -198,6 +217,7 @@
 
 .dashboard-header h1 em {
   color: #1e5631;
+  font-style: italic;
 }
 
 
@@ -208,6 +228,12 @@
   align-items: center;
 
   gap: 12px;
+
+  padding: 8px 16px 8px 8px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .dashboard-avatar {
@@ -226,6 +252,8 @@
   font-family: "Cormorant Garamond", serif;
 
   font-size: 20px;
+
+  box-shadow: 0 4px 12px rgba(30, 86, 49, 0.35);
 }
 
 .dashboard-user strong,
@@ -265,17 +293,22 @@
 
   padding: 25px;
 
-  border: 1px solid rgba(23, 23, 19, 0.12);
+  border: 1px solid rgba(23, 23, 19, 0.1);
+  border-radius: 14px;
 
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.5);
+
+  box-shadow: 0 10px 30px rgba(23, 23, 19, 0.04);
 
   transition: 0.35s ease;
 }
 
 .stat-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 
-  border-color: #1e5631;
+  border-color: rgba(30, 86, 49, 0.3);
+
+  box-shadow: 0 20px 40px rgba(30, 86, 49, 0.12);
 }
 
 .stat-card > span {
@@ -323,6 +356,38 @@
   font-size: 45px;
 }
 
+.stat-card .online::before {
+  content: "";
+
+  display: inline-block;
+
+  width: 8px;
+  height: 8px;
+
+  margin-right: 8px;
+  margin-bottom: 4px;
+
+  border-radius: 50%;
+
+  background: #1e5631;
+
+  box-shadow: 0 0 0 rgba(30, 86, 49, 0.5);
+
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(30, 86, 49, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(30, 86, 49, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(30, 86, 49, 0);
+  }
+}
+
 
 /* SECTION */
 
@@ -361,6 +426,7 @@
 
 .section-heading h2 em {
   color: #1e5631;
+  font-style: italic;
 }
 
 .section-heading > p {
@@ -397,15 +463,19 @@
 
   text-align: left;
 
-  border: 1px solid rgba(23, 23, 19, 0.12);
+  border: 1px solid rgba(23, 23, 19, 0.1);
+  border-radius: 14px;
 
-  background: transparent;
+  background: rgba(255, 255, 255, 0.35);
 
   cursor: pointer;
 
+  overflow: hidden;
+
   transition:
     background 0.35s ease,
-    transform 0.35s ease;
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .management-card > span {
@@ -465,7 +535,9 @@
 
   color: #f6f1e8;
 
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+
+  box-shadow: 0 20px 40px rgba(30, 86, 49, 0.25);
 }
 
 .management-card:hover > span {
@@ -474,6 +546,8 @@
 
 .management-card:hover b {
   border-color: rgba(246, 241, 232, 0.5);
+
+  transform: rotate(45deg);
 }
 
 
@@ -492,6 +566,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
+    box-shadow: 0 10px 30px rgba(23, 61, 39, 0.15);
   }
 
   .admin-dashboard {
