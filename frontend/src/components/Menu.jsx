@@ -1,105 +1,195 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Menu.css';
 
-const menuData = {
-  Food: {
-    subcategories: [
-      {
-        name: 'Saj',
-        items: [
-          { name: 'Saj Item 1', price: '3.00' },
-          { name: 'Saj Item 2', price: '4.00' },
-          { name: 'Saj Item 3', price: '5.00' },
-        ],
-      },
-      {
-        name: 'Croissant',
-        items: [
-          { name: 'Croissant Item 1', price: '3.00' },
-          { name: 'Croissant Item 2', price: '4.00' },
-          { name: 'Croissant Item 3', price: '4.50' },
-        ],
-      },
-    ],
-  },
+const CATEGORIES_API =
+  'http://localhost/UCaffe-redesign/backend/categories/get.php';
 
-  Beverages: {
-    subcategories: [
-      {
-        name: 'Hot Drinks',
-        items: [
-          { name: 'Espresso', price: '2.50' },
-          { name: 'Cappuccino', price: '3.50' },
-          { name: 'Latte', price: '4.00' },
-          { name: 'Turkish Coffee', price: '3.00' },
-        ],
-      },
-      {
-        name: 'Cold Drinks',
-        items: [
-          { name: 'Iced Coffee', price: '4.00' },
-          { name: 'Iced Latte', price: '4.50' },
-          { name: 'Iced Americano', price: '3.50' },
-        ],
-      },
-      {
-        name: 'Other Drinks',
-        items: [
-          { name: 'Soft Drink', price: '2.00' },
-          { name: 'Energy Drink', price: '3.00' },
-          { name: 'Water', price: '1.00' },
-        ],
-      },
-      {
-        name: 'Juice & Homemade Ice Tea',
-        items: [
-          { name: 'Fresh Orange Juice', price: '4.00' },
-          { name: 'Lemonade', price: '3.50' },
-          { name: 'Homemade Ice Tea', price: '4.00' },
-        ],
-      },
-    ],
-  },
-
-  Dessert: {
-    subcategories: [],
-    items: [
-      { name: 'Cheesecake', price: '5.00' },
-      { name: 'Brownie', price: '4.50' },
-      { name: 'Chocolate Cake', price: '5.00' },
-    ],
-  },
-
-  Shisha: {
-    subcategories: [],
-    items: [
-      { name: 'Love 66', price: '10.00' },
-      { name: 'Mizyan', price: '10.00' },
-      { name: 'Double Apple', price: '10.00' },
-    ],
-  },
-
-  Others: {
-    subcategories: [],
-    items: [
-      { name: 'Item 1', price: '3.00' },
-      { name: 'Item 2', price: '4.00' },
-    ],
-  },
-};
+const ITEMS_API =
+  'http://localhost/UCaffe-redesign/backend/items/get.php';
 
 function Menu({ category, onBack }) {
-  const data = menuData[category.name];
 
-  const [selectedSubcategory, setSelectedSubcategory] = useState(
-    data.subcategories.length > 0
-      ? data.subcategories[0]
-      : null
+  const [categories, setCategories] = useState([]);
+  const [itemsData, setItemsData] = useState([]);
+
+  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+
+    const loadMenu = async () => {
+
+      try {
+
+        setLoading(true);
+        setError('');
+
+        const [categoriesResponse, itemsResponse] =
+          await Promise.all([
+            fetch(CATEGORIES_API),
+            fetch(ITEMS_API),
+          ]);
+
+        const categoriesResult =
+          await categoriesResponse.json();
+
+        const itemsResult =
+          await itemsResponse.json();
+
+        if (!categoriesResult.success) {
+          throw new Error('Failed to load categories');
+        }
+
+        if (!itemsResult.success) {
+          throw new Error('Failed to load items');
+        }
+
+        setCategories(categoriesResult.data);
+        setItemsData(itemsResult.data);
+
+      } catch (err) {
+
+        console.error(err);
+
+        setError(
+          'Could not load the menu. Please try again.'
+        );
+
+      } finally {
+
+        setLoading(false);
+
+      }
+    };
+
+    loadMenu();
+
+  }, []);
+
+
+  /*
+   * Find subcategories belonging
+   * to the selected main category
+   */
+  const subcategories = categories.filter(
+    (cat) =>
+      Number(cat.parent_id) === Number(category.id)
   );
 
-  const items = selectedSubcategory
-    ? selectedSubcategory.items
-    : data.items || [];
+
+  /*
+   * Select first subcategory automatically
+   */
+  useEffect(() => {
+
+    if (subcategories.length > 0) {
+
+      setSelectedSubcategory(subcategories[0]);
+
+    } else {
+
+      setSelectedSubcategory(null);
+
+    }
+
+  }, [category.id, categories.length]);
+
+
+  /*
+   * Get items
+   *
+   * If a subcategory is selected:
+   * show items belonging to that subcategory.
+   *
+   * Otherwise:
+   * show items belonging directly to the main category.
+   */
+  const currentCategoryId = selectedSubcategory
+    ? selectedSubcategory.id
+    : category.id;
+
+
+  const items = itemsData.filter(
+    (item) =>
+      Number(item.category_id) === Number(currentCategoryId)
+  );
+
+
+  if (loading) {
+
+    return (
+      <section className="menu-page">
+
+        <button
+          className="menu-back"
+          onClick={onBack}
+        >
+          ← MENU
+        </button>
+
+        <div className="menu-page-header">
+
+          <span>OUR MENU</span>
+
+          <h1>{category.name}</h1>
+
+          <div className="menu-title-line"></div>
+
+        </div>
+
+        <div className="menu-items">
+
+          <div className="items-heading">
+            <span>Loading...</span>
+          </div>
+
+        </div>
+
+      </section>
+    );
+
+  }
+
+
+  if (error) {
+
+    return (
+      <section className="menu-page">
+
+        <button
+          className="menu-back"
+          onClick={onBack}
+        >
+          ← MENU
+        </button>
+
+        <div className="menu-page-header">
+
+          <span>OUR MENU</span>
+
+          <h1>{category.name}</h1>
+
+          <div className="menu-title-line"></div>
+
+        </div>
+
+        <div className="menu-items">
+
+          <div className="items-heading">
+
+            <span>{error}</span>
+
+          </div>
+
+        </div>
+
+      </section>
+    );
+
+  }
+
 
   return (
     <section className="menu-page">
@@ -129,16 +219,16 @@ function Menu({ category, onBack }) {
 
       {/* SUBCATEGORIES */}
 
-      {data.subcategories.length > 0 && (
+      {subcategories.length > 0 && (
 
         <div className="menu-filters">
 
-          {data.subcategories.map((subcategory) => (
+          {subcategories.map((subcategory) => (
 
             <button
-              key={subcategory.name}
+              key={subcategory.id}
               className={
-                selectedSubcategory?.name === subcategory.name
+                selectedSubcategory?.id === subcategory.id
                   ? 'menu-filter active'
                   : 'menu-filter'
               }
@@ -177,28 +267,42 @@ function Menu({ category, onBack }) {
 
         <div className="items-list">
 
-          {items.map((item, index) => (
+          {items.length > 0 ? (
 
-            <div
-              className="menu-item"
-              key={`${item.name}-${index}`}
-            >
+            items.map((item, index) => (
 
-              <span className="item-number">
-                0{index + 1}
-              </span>
+              <div
+                className="menu-item"
+                key={item.id}
+              >
+
+                <span className="item-number">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+
+                <h3>
+                  {item.name}
+                </h3>
+
+                <strong>
+                  ${Number(item.price).toFixed(2)}
+                </strong>
+
+              </div>
+
+            ))
+
+          ) : (
+
+            <div className="menu-item">
 
               <h3>
-                {item.name}
+                No items available yet.
               </h3>
-
-              <strong>
-                ${item.price}
-              </strong>
 
             </div>
 
-          ))}
+          )}
 
         </div>
 

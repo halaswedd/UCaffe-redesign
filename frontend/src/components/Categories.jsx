@@ -1,38 +1,126 @@
+import { useEffect, useState } from 'react';
 import './Categories.css';
 
-const categories = [
-  {
-    id: 1,
-    name: 'Food',
-    image: '/src/assets/images/categories/food.jpg',
-  },
-  {
-    id: 2,
-    name: 'Dessert',
-    image: '/src/assets/images/categories/dessert.jpg',
-  },
-  {
-    id: 3,
-    name: 'Beverages',
-    image: '/src/assets/images/categories/beverages.jpg',
-  },
-  {
-    id: 4,
-    name: 'Shisha',
-    image: '/src/assets/images/categories/shisha.jpg',
-  },
-  {
-    id: 5,
-    name: 'Others',
-    image: '/src/assets/images/categories/others.jpg',
-  },
-];
+const API_URL =
+  'http://localhost/UCaffe-redesign/backend/categories/get.php';
+
+const IMAGE_BASE_URL =
+  'http://localhost/UCaffe-redesign/backend/';
 
 function Categories({ onCategorySelect }) {
+
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+
+    fetch(API_URL)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to connect to server');
+        }
+
+        return response.json();
+      })
+      .then((result) => {
+
+        if (result.success) {
+
+          setCategories(result.data);
+
+        } else {
+
+          setError('Failed to load categories');
+
+        }
+
+      })
+      .catch((err) => {
+
+        console.error('Categories error:', err);
+
+        setError('Could not load categories');
+
+      })
+      .finally(() => {
+
+        setLoading(false);
+
+      });
+
+  }, []);
+
+
+  // Only main categories
+  // parent_id = NULL
+  const mainCategories = categories.filter(
+    (category) =>
+      category.parent_id === null ||
+      category.parent_id === '0' ||
+      category.parent_id === 0
+  );
+
+
+  if (loading) {
+
+    return (
+      <section className="categories" id="menu">
+
+        <div className="categories-header">
+
+          <p>EXPLORE</p>
+
+          <h2>
+            OUR <span>MENU</span>
+          </h2>
+
+          <div className="categories-line"></div>
+
+          <span>
+            Loading menu...
+          </span>
+
+        </div>
+
+      </section>
+    );
+
+  }
+
+
+  if (error) {
+
+    return (
+      <section className="categories" id="menu">
+
+        <div className="categories-header">
+
+          <p>EXPLORE</p>
+
+          <h2>
+            OUR <span>MENU</span>
+          </h2>
+
+          <div className="categories-line"></div>
+
+          <span>
+            {error}
+          </span>
+
+        </div>
+
+      </section>
+    );
+
+  }
+
+
   return (
     <section className="categories" id="menu">
 
       <div className="categories-header">
+
         <p>EXPLORE</p>
 
         <h2>
@@ -44,44 +132,60 @@ function Categories({ onCategorySelect }) {
         <span>
           Something for every mood.
         </span>
+
       </div>
+
 
       <div className="categories-grid">
 
-        {categories.map((category) => (
-          <article
-            className={`category-card category-${category.id}`}
-            key={category.id}
-            onClick={() => onCategorySelect(category)}
-          >
+        {mainCategories.map((category, index) => {
 
-            <img
-              src={category.image}
-              alt={category.name}
-            />
+          const imageUrl = category.image
+            ? `${IMAGE_BASE_URL}${category.image}`
+            : '';
 
-            <div className="category-overlay"></div>
+          return (
 
-            <div className="category-content">
+            <article
+              className={`category-card category-${index + 1}`}
+              key={category.id}
+              onClick={() => onCategorySelect(category)}
+            >
 
-              <span className="category-number">
-                0{category.id}
-              </span>
+              {imageUrl && (
+                <img
+                  src={imageUrl}
+                  alt={category.name}
+                />
+              )}
 
-              <div className="category-bottom">
+              <div className="category-overlay"></div>
 
-                <h3>{category.name}</h3>
+              <div className="category-content">
 
-                <span className="category-arrow">
-                  ↗
+                <span className="category-number">
+                  {String(index + 1).padStart(2, '0')}
                 </span>
+
+                <div className="category-bottom">
+
+                  <h3>
+                    {category.name}
+                  </h3>
+
+                  <span className="category-arrow">
+                    ↗
+                  </span>
+
+                </div>
 
               </div>
 
-            </div>
+            </article>
 
-          </article>
-        ))}
+          );
+
+        })}
 
       </div>
 
