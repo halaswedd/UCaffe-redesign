@@ -1,0 +1,536 @@
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+.admin-login {
+  width: 100%;
+  min-height: 100svh;
+
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+
+  background: var(--cream, #f6f1e8);
+  color: var(--black, #171713);
+
+  overflow: hidden;
+}
+
+
+/* =========================
+   IMAGE SIDE
+========================= */
+
+.admin-login-image {
+  position: relative;
+
+  min-height: 100svh;
+
+  background-image: url("/src/assets/images/cafe-opening.jpg");
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.admin-login-image::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(12, 35, 22, 0.88),
+      rgba(30, 86, 49, 0.48),
+      rgba(12, 35, 22, 0.82)
+    );
+}
+
+.admin-login-image::after {
+  content: "";
+
+  position: absolute;
+  inset: 24px;
+
+  border: 1px solid rgba(246, 241, 232, 0.22);
+
+  pointer-events: none;
+}
+
+.admin-login-image-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at center,
+      transparent 10%,
+      rgba(0, 0, 0, 0.25) 100%
+    );
+}
+
+
+/* =========================
+   BRAND
+========================= */
+
+.admin-brand {
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+
+  color: #f6f1e8;
+
+  animation: adminReveal 1s ease forwards;
+}
+
+.admin-brand span {
+  display: block;
+
+  margin-bottom: 18px;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.4em;
+}
+
+.admin-brand h1 {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(5rem, 9vw, 9rem);
+
+  font-weight: 500;
+
+  line-height: 0.75;
+
+  letter-spacing: 0.06em;
+}
+
+.admin-brand p {
+  margin-top: 25px;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: 0.3em;
+
+  opacity: 0.75;
+}
+
+
+/* =========================
+   IMAGE BOTTOM
+========================= */
+
+.admin-image-bottom {
+  position: absolute;
+  z-index: 3;
+
+  bottom: 42px;
+  left: 48px;
+  right: 48px;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: #f6f1e8;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 8px;
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+
+  opacity: 0.7;
+}
+
+
+/* =========================
+   LOGIN PANEL
+========================= */
+
+.admin-login-panel {
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 60px 7vw;
+
+  background: #f6f1e8;
+}
+
+.admin-login-content {
+  width: 100%;
+  max-width: 470px;
+}
+
+
+/* =========================
+   TOP
+========================= */
+
+.admin-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 90px;
+}
+
+.admin-label {
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.28em;
+
+  color: #1e5631;
+}
+
+.admin-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #1e5631;
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.admin-heading > span {
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.35em;
+
+  color: #1e5631;
+}
+
+.admin-heading h2 {
+  margin: 14px 0 0;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(4rem, 6vw, 6rem);
+
+  font-weight: 500;
+
+  line-height: 0.78;
+
+  letter-spacing: -0.02em;
+}
+
+.admin-heading h2 em {
+  color: #1e5631;
+
+  font-style: italic;
+}
+
+.admin-line {
+  width: 42px;
+  height: 1px;
+
+  margin-top: 28px;
+
+  background: #9a7658;
+}
+
+.admin-heading p {
+  max-width: 340px;
+
+  margin: 20px 0 0;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 11px;
+
+  line-height: 1.8;
+
+  color: rgba(23, 23, 19, 0.58);
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.admin-login form {
+  margin-top: 48px;
+}
+
+.admin-field {
+  margin-bottom: 27px;
+}
+
+.admin-field label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+
+  color: #1e5631;
+}
+
+.admin-field input {
+  width: 100%;
+
+  padding: 15px 0;
+
+  border: none;
+  border-bottom: 1px solid rgba(23, 23, 19, 0.25);
+
+  outline: none;
+
+  background: transparent;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 13px;
+
+  color: #171713;
+
+  transition:
+    border-color 0.3s ease,
+    padding 0.3s ease;
+}
+
+.admin-field input::placeholder {
+  color: rgba(23, 23, 19, 0.35);
+}
+
+.admin-field input:focus {
+  border-bottom-color: #1e5631;
+
+  padding-left: 5px;
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.admin-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin: -5px 0 20px;
+
+  padding: 12px 14px;
+
+  border-left: 2px solid #9a7658;
+
+  background: rgba(154, 118, 88, 0.08);
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 10px;
+
+  color: #6c4730;
+}
+
+.admin-error span {
+  width: 18px;
+  height: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #9a7658;
+  border-radius: 50%;
+
+  font-size: 10px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.admin-login-btn {
+  width: 100%;
+
+  margin-top: 10px;
+
+  padding: 17px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 1px solid #1e5631;
+
+  background: #1e5631;
+  color: #f6f1e8;
+
+  cursor: pointer;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.admin-login-btn b {
+  font-size: 18px;
+  font-weight: 400;
+
+  transition: transform 0.3s ease;
+}
+
+.admin-login-btn:hover {
+  background: transparent;
+  color: #1e5631;
+
+  transform: translateY(-2px);
+}
+
+.admin-login-btn:hover b {
+  transform: translate(4px, -4px);
+}
+
+.admin-login-btn:disabled {
+  cursor: wait;
+  opacity: 0.65;
+
+  transform: none;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.admin-footer {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 65px;
+  padding-top: 18px;
+
+  border-top: 1px solid rgba(23, 23, 19, 0.12);
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  font-size: 7px;
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+
+  color: rgba(23, 23, 19, 0.4);
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes adminReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+  .admin-login {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-login-image {
+    display: none;
+  }
+
+  .admin-login-panel {
+    padding: 50px 8vw;
+  }
+
+  .admin-login-content {
+    max-width: 520px;
+  }
+
+  .admin-top {
+    margin-bottom: 70px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .admin-login-panel {
+    padding: 35px 25px;
+  }
+
+  .admin-top {
+    margin-bottom: 65px;
+  }
+
+  .admin-heading h2 {
+    font-size: 4.3rem;
+  }
+
+  .admin-heading p {
+    font-size: 10px;
+  }
+
+  .admin-login form {
+    margin-top: 40px;
+  }
+
+  .admin-footer {
+    margin-top: 50px;
+  }
+}
