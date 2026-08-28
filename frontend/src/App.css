@@ -4,6 +4,21 @@
   box-sizing: border-box;
 }
 
+:root {
+  --dark-green: #1e5631;
+  --coffee-brown: #6b4226;
+  --cream: #f6f1e8;
+  --off-white: #fcfbf7;
+  --black: #171714;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: var(--black);
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Cormorant Garamond', serif;
 }
