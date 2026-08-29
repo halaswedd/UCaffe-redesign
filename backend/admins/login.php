@@ -47,9 +47,9 @@ $password = $data["password"];
 
 
 $stmt = $conn->prepare(
-    "SELECT id, email, password
+    "SELECT id, username, password
      FROM admins
-     WHERE email = ?
+     WHERE username = ?
      LIMIT 1"
 );
 
@@ -100,7 +100,7 @@ echo json_encode([
 
     "admin" => [
         "id" => $admin["id"],
-        "email" => $admin["email"]
+        "email" => $admin["username"]
     ]
 ]);
 
