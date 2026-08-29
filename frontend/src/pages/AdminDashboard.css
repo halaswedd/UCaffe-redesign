@@ -1,3 +1,7 @@
+/* =========================================
+   ADMIN DASHBOARD
+========================================= */
+
 .admin-dashboard {
   min-height: 100svh;
 
@@ -6,11 +10,13 @@
   background: #f6f1e8;
   color: #171713;
 
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 
-/* SIDEBAR */
+/* =========================================
+   SIDEBAR
+========================================= */
 
 .admin-sidebar {
   width: 245px;
@@ -25,46 +31,130 @@
   display: flex;
   flex-direction: column;
 
-  background: linear-gradient(160deg, #1e5631 0%, #163f24 100%);
+  background: linear-gradient(
+    160deg,
+    #1e5631 0%,
+    #163f24 100%
+  );
+
   color: #f6f1e8;
 
-  box-shadow: 4px 0 30px rgba(23, 61, 39, 0.15);
+  box-shadow:
+    4px 0 30px rgba(23, 61, 39, 0.15);
+
+  z-index: 100;
 }
 
+
+/* =========================================
+   DASHBOARD LOGO
+========================================= */
 
 .dashboard-logo {
-  padding-bottom: 35px;
+  width: 100%;
 
-  border-bottom: 1px solid rgba(246, 241, 232, 0.15);
+  padding: 0 0 32px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  border-bottom:
+    1px solid rgba(246, 241, 232, 0.15);
 }
 
-.dashboard-logo span {
-  display: block;
 
-  font-family: "Cormorant Garamond", serif;
+/* =========================================
+   LOGO IMAGE
+========================================= */
 
-  font-size: 42px;
+.dashboard-logo-mark {
+  width: 54px;
+  height: 54px;
 
-  line-height: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  letter-spacing: 0.05em;
+  margin-bottom: 18px;
 }
 
-.dashboard-logo small {
+
+.dashboard-logo-img {
+  width: 54px;
+  height: 54px;
+
   display: block;
 
-  margin-top: 12px;
+  object-fit: contain;
+
+  /*
+    Convert original logo to white
+  */
+
+  filter:
+    brightness(0)
+    invert(1);
+
+  opacity: 0.96;
+}
+
+
+/* =========================================
+   LOGO TEXT
+========================================= */
+
+.dashboard-logo-text {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+.dashboard-logo-text span {
+  display: block;
+
+  margin: 0;
+
+  color: #f6f1e8;
+
+  font-family: "Unbounded", sans-serif;
+
+  font-size: 25px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -0.045em;
+}
+
+
+.dashboard-logo-text small {
+  display: block;
+
+  margin-top: 10px;
+
+  color: rgba(246, 241, 232, 0.5);
+
+  font-family: "Nunito Sans", sans-serif;
 
   font-size: 7px;
-  font-weight: 600;
+
+  font-weight: 800;
+
+  line-height: 1;
 
   letter-spacing: 0.3em;
 
-  opacity: 0.55;
+  text-transform: uppercase;
 }
 
 
-/* NAV */
+/* =========================================
+   NAVIGATION
+========================================= */
 
 .dashboard-nav {
   margin-top: 55px;
@@ -74,6 +164,7 @@
 
   gap: 4px;
 }
+
 
 .dashboard-nav-item {
   width: 100%;
@@ -89,52 +180,69 @@
   border-radius: 8px;
 
   background: transparent;
+
   color: rgba(246, 241, 232, 0.55);
 
   text-align: left;
 
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
 
   letter-spacing: 0.08em;
 
   cursor: pointer;
 
-  transition: 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    padding 0.3s ease;
 }
+
 
 .dashboard-nav-item span {
   font-size: 7px;
 
   opacity: 0.5;
+
+  transition: opacity 0.3s ease;
 }
 
+
 .dashboard-nav-item:hover {
-  background: rgba(246, 241, 232, 0.08);
+  background:
+    rgba(246, 241, 232, 0.08);
 
   color: #f6f1e8;
 
   padding-left: 18px;
 }
 
+
 .dashboard-nav-item.active {
-  background: rgba(246, 241, 232, 0.14);
+  background:
+    rgba(246, 241, 232, 0.14);
 
   color: #f6f1e8;
 
-  box-shadow: inset 2px 0 0 #f6f1e8;
+  box-shadow:
+    inset 2px 0 0 #f6f1e8;
 }
+
 
 .dashboard-nav-item.active span {
   opacity: 1;
 }
 
 
-/* LOGOUT */
+/* =========================================
+   LOGOUT
+========================================= */
 
 .dashboard-logout {
+  width: 100%;
+
   margin-top: auto;
 
   padding: 15px 10px;
@@ -144,34 +252,55 @@
   align-items: center;
 
   border: none;
-  border-top: 1px solid rgba(246, 241, 232, 0.15);
+
+  border-top:
+    1px solid rgba(246, 241, 232, 0.15);
 
   background: transparent;
+
   color: #f6f1e8;
 
   cursor: pointer;
 
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 
   font-size: 8px;
+
   font-weight: 700;
 
   letter-spacing: 0.2em;
 
-  transition: opacity 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    padding 0.3s ease;
 }
+
 
 .dashboard-logout:hover {
   opacity: 0.7;
+
+  padding-left: 14px;
 }
+
 
 .dashboard-logout b {
   font-size: 15px;
+
   font-weight: 400;
+
+  transition:
+    transform 0.3s ease;
 }
 
 
-/* MAIN */
+.dashboard-logout:hover b {
+  transform: translate(3px, -3px);
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
 
 .dashboard-main {
   width: calc(100% - 245px);
@@ -182,7 +311,9 @@
 }
 
 
-/* HEADER */
+/* =========================================
+   HEADER
+========================================= */
 
 .dashboard-header {
   display: flex;
@@ -191,37 +322,52 @@
 
   padding-bottom: 45px;
 
-  border-bottom: 1px solid rgba(23, 23, 19, 0.13);
+  border-bottom:
+    1px solid rgba(23, 23, 19, 0.13);
 }
 
+
 .dashboard-eyebrow {
+  font-family: "Nunito Sans", sans-serif;
+
   font-size: 8px;
-  font-weight: 700;
+
+  font-weight: 800;
 
   letter-spacing: 0.3em;
 
   color: #1e5631;
+
+  text-transform: uppercase;
 }
+
 
 .dashboard-header h1 {
   margin: 18px 0 0;
 
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Unbounded", sans-serif;
 
-  font-size: clamp(3.5rem, 6vw, 6.5rem);
+  font-size:
+    clamp(2.8rem, 5vw, 5.5rem);
 
-  font-weight: 500;
+  font-weight: 400;
 
-  line-height: 0.78;
+  line-height: 0.95;
+
+  letter-spacing: -0.05em;
 }
+
 
 .dashboard-header h1 em {
   color: #1e5631;
-  font-style: italic;
+
+  font-style: normal;
 }
 
 
-/* USER */
+/* =========================================
+   USER
+========================================= */
 
 .dashboard-user {
   display: flex;
@@ -233,12 +379,16 @@
 
   border-radius: 999px;
 
-  background: rgba(255, 255, 255, 0.4);
+  background:
+    rgba(255, 255, 255, 0.4);
 }
+
 
 .dashboard-avatar {
   width: 38px;
   height: 38px;
+
+  flex-shrink: 0;
 
   display: flex;
   align-items: center;
@@ -247,44 +397,70 @@
   border-radius: 50%;
 
   background: #1e5631;
+
   color: #f6f1e8;
 
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Unbounded", sans-serif;
 
-  font-size: 20px;
+  font-size: 13px;
 
-  box-shadow: 0 4px 12px rgba(30, 86, 49, 0.35);
+  box-shadow:
+    0 4px 12px rgba(30, 86, 49, 0.35);
 }
 
-.dashboard-user strong,
-.dashboard-user span {
-  display: block;
-}
+
+/*
+   Hide administrator title
+*/
 
 .dashboard-user strong {
-  font-size: 9px;
+  display: none;
 }
+
+
+/*
+   Show email / account
+*/
 
 .dashboard-user span {
-  margin-top: 4px;
+  display: block;
 
-  font-size: 7px;
+  font-family: "Nunito Sans", sans-serif;
 
-  opacity: 0.5;
+  font-size: 8px;
+
+  font-weight: 700;
+
+  opacity: 0.6;
 }
 
 
-/* STATS */
+/* =========================================
+   STATS
+========================================= */
 
 .dashboard-stats {
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
 
   gap: 15px;
 
   margin-top: 35px;
+
+  max-width: 760px;
 }
+
+
+/*
+   Hide third status card if present
+*/
+
+.stat-card:nth-child(3) {
+  display: none;
+}
+
 
 .stat-card {
   position: relative;
@@ -293,29 +469,43 @@
 
   padding: 25px;
 
-  border: 1px solid rgba(23, 23, 19, 0.1);
+  border:
+    1px solid rgba(23, 23, 19, 0.1);
+
   border-radius: 14px;
 
-  background: rgba(255, 255, 255, 0.5);
+  background:
+    rgba(255, 255, 255, 0.5);
 
-  box-shadow: 0 10px 30px rgba(23, 23, 19, 0.04);
+  box-shadow:
+    0 10px 30px rgba(23, 23, 19, 0.04);
 
-  transition: 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
+
 
 .stat-card:hover {
   transform: translateY(-6px);
 
-  border-color: rgba(30, 86, 49, 0.3);
+  border-color:
+    rgba(30, 86, 49, 0.3);
 
-  box-shadow: 0 20px 40px rgba(30, 86, 49, 0.12);
+  box-shadow:
+    0 20px 40px rgba(30, 86, 49, 0.12);
 }
+
 
 .stat-card > span {
   font-size: 8px;
 
+  font-weight: 700;
+
   color: #1e5631;
 }
+
 
 .stat-card small {
   display: block;
@@ -323,24 +513,31 @@
   margin-top: 30px;
 
   font-size: 8px;
-  font-weight: 700;
+
+  font-weight: 800;
 
   letter-spacing: 0.2em;
+
+  text-transform: uppercase;
 }
+
 
 .stat-card strong {
   display: block;
 
   margin-top: 5px;
 
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Unbounded", sans-serif;
 
-  font-size: 55px;
+  font-size: 42px;
 
-  font-weight: 500;
+  font-weight: 400;
 
   line-height: 1;
+
+  letter-spacing: -0.04em;
 }
+
 
 .stat-card p {
   margin: 8px 0 0;
@@ -350,50 +547,15 @@
   opacity: 0.5;
 }
 
-.stat-card .online {
-  color: #1e5631;
 
-  font-size: 45px;
-}
-
-.stat-card .online::before {
-  content: "";
-
-  display: inline-block;
-
-  width: 8px;
-  height: 8px;
-
-  margin-right: 8px;
-  margin-bottom: 4px;
-
-  border-radius: 50%;
-
-  background: #1e5631;
-
-  box-shadow: 0 0 0 rgba(30, 86, 49, 0.5);
-
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(30, 86, 49, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 8px rgba(30, 86, 49, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(30, 86, 49, 0);
-  }
-}
-
-
-/* SECTION */
+/* =========================================
+   SECTION
+========================================= */
 
 .dashboard-section {
   margin-top: 90px;
 }
+
 
 .section-heading {
   display: flex;
@@ -403,34 +565,47 @@
   margin-bottom: 35px;
 }
 
+
 .section-heading > div > span {
   font-size: 8px;
-  font-weight: 700;
+
+  font-weight: 800;
 
   letter-spacing: 0.3em;
 
   color: #1e5631;
+
+  text-transform: uppercase;
 }
+
 
 .section-heading h2 {
   margin: 15px 0 0;
 
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Unbounded", sans-serif;
 
-  font-size: clamp(3rem, 5vw, 5rem);
+  font-size:
+    clamp(2.5rem, 4vw, 4.5rem);
 
-  font-weight: 500;
+  font-weight: 400;
 
-  line-height: 0.8;
+  line-height: 0.95;
+
+  letter-spacing: -0.05em;
 }
+
 
 .section-heading h2 em {
   color: #1e5631;
-  font-style: italic;
+
+  font-style: normal;
 }
+
 
 .section-heading > p {
   max-width: 220px;
+
+  margin: 0;
 
   font-size: 9px;
 
@@ -440,15 +615,23 @@
 }
 
 
-/* MANAGEMENT */
+/* =========================================
+   MANAGEMENT GRID
+========================================= */
 
 .management-grid {
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns:
+    repeat(3, 1fr);
 
   gap: 15px;
 }
+
+
+/* =========================================
+   MANAGEMENT CARD
+========================================= */
 
 .management-card {
   min-height: 220px;
@@ -463,10 +646,15 @@
 
   text-align: left;
 
-  border: 1px solid rgba(23, 23, 19, 0.1);
+  border:
+    1px solid rgba(23, 23, 19, 0.1);
+
   border-radius: 14px;
 
-  background: rgba(255, 255, 255, 0.35);
+  background:
+    rgba(255, 255, 255, 0.35);
+
+  color: #171713;
 
   cursor: pointer;
 
@@ -474,25 +662,37 @@
 
   transition:
     background 0.35s ease,
+    color 0.35s ease,
     transform 0.35s ease,
     box-shadow 0.35s ease;
 }
 
+
 .management-card > span {
   font-size: 8px;
 
+  font-weight: 800;
+
   color: #1e5631;
+
+  transition: color 0.35s ease;
 }
+
 
 .management-card h3 {
   margin: 0;
 
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Unbounded", sans-serif;
 
-  font-size: 38px;
+  font-size: 28px;
 
-  font-weight: 500;
+  font-weight: 400;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.04em;
 }
+
 
 .management-card p {
   max-width: 170px;
@@ -505,6 +705,7 @@
 
   opacity: 0.5;
 }
+
 
 .management-card b {
   position: absolute;
@@ -519,7 +720,8 @@
   align-items: center;
   justify-content: center;
 
-  border: 1px solid rgba(23, 23, 19, 0.2);
+  border:
+    1px solid rgba(23, 23, 19, 0.2);
 
   border-radius: 50%;
 
@@ -527,8 +729,16 @@
 
   font-weight: 400;
 
-  transition: 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
 }
+
+
+/* =========================================
+   MANAGEMENT HOVER
+========================================= */
 
 .management-card:hover {
   background: #1e5631;
@@ -537,66 +747,133 @@
 
   transform: translateY(-6px);
 
-  box-shadow: 0 20px 40px rgba(30, 86, 49, 0.25);
+  box-shadow:
+    0 20px 40px rgba(30, 86, 49, 0.25);
 }
+
 
 .management-card:hover > span {
   color: #f6f1e8;
 }
 
+
 .management-card:hover b {
-  border-color: rgba(246, 241, 232, 0.5);
+  border-color:
+    rgba(246, 241, 232, 0.5);
 
   transform: rotate(45deg);
 }
 
 
-/* MOBILE */
+/* =========================================
+   TABLET
+========================================= */
 
 @media (max-width: 900px) {
-
-  .admin-sidebar {
-    position: relative;
-
-    width: 100%;
-    min-height: auto;
-
-    padding: 25px;
-
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-    box-shadow: 0 10px 30px rgba(23, 61, 39, 0.15);
-  }
 
   .admin-dashboard {
     display: block;
   }
 
+
+  /* SIDEBAR */
+
+  .admin-sidebar {
+    width: 100%;
+
+    min-height: auto;
+
+    position: relative;
+
+    left: auto;
+    top: auto;
+
+    padding: 20px 25px;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    box-shadow:
+      0 10px 30px rgba(23, 61, 39, 0.15);
+  }
+
+
+  /* LOGO */
+
   .dashboard-logo {
+    width: auto;
+
     padding: 0;
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 12px;
 
     border: none;
   }
 
-  .dashboard-logo span {
-    font-size: 30px;
+
+  .dashboard-logo-mark {
+    width: 40px;
+    height: 40px;
+
+    margin: 0;
   }
 
-  .dashboard-logo small {
-    display: none;
+
+  .dashboard-logo-img {
+    width: 40px;
+    height: 40px;
   }
+
+
+  .dashboard-logo-text {
+    align-items: flex-start;
+  }
+
+
+  .dashboard-logo-text span {
+    font-size: 20px;
+  }
+
+
+  .dashboard-logo-text small {
+    margin-top: 6px;
+
+    font-size: 6px;
+  }
+
+
+  /* NAVIGATION */
 
   .dashboard-nav {
     display: none;
   }
 
+
+  /* LOGOUT */
+
   .dashboard-logout {
+    width: auto;
+
     margin: 0;
 
+    padding: 12px 5px;
+
     border: none;
+
+    gap: 10px;
   }
+
+
+  /* MAIN */
 
   .dashboard-main {
     width: 100%;
@@ -606,6 +883,9 @@
     padding: 45px 25px 60px;
   }
 
+
+  /* HEADER */
+
   .dashboard-header {
     align-items: flex-start;
 
@@ -614,10 +894,24 @@
     gap: 30px;
   }
 
-  .dashboard-stats,
+
+  /* STATS */
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+
+    max-width: none;
+  }
+
+
+  /* MANAGEMENT */
+
   .management-grid {
     grid-template-columns: 1fr;
   }
+
+
+  /* SECTION */
 
   .section-heading {
     align-items: flex-start;
@@ -625,5 +919,161 @@
     flex-direction: column;
 
     gap: 20px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+
+  /* SIDEBAR */
+
+  .admin-sidebar {
+    padding: 18px 18px;
+  }
+
+
+  /* LOGO */
+
+  .dashboard-logo {
+    gap: 9px;
+  }
+
+
+  .dashboard-logo-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+
+  .dashboard-logo-img {
+    width: 34px;
+    height: 34px;
+  }
+
+
+  .dashboard-logo-text span {
+    font-size: 17px;
+  }
+
+
+  .dashboard-logo-text small {
+    margin-top: 5px;
+
+    font-size: 5px;
+
+    letter-spacing: 0.25em;
+  }
+
+
+  /* LOGOUT */
+
+  .dashboard-logout span {
+    font-size: 7px;
+  }
+
+
+  .dashboard-logout b {
+    font-size: 13px;
+  }
+
+
+  /* MAIN */
+
+  .dashboard-main {
+    padding:
+      35px 18px 50px;
+  }
+
+
+  /* HEADER */
+
+  .dashboard-header h1 {
+    font-size: 2.5rem;
+  }
+
+
+  /* USER */
+
+  .dashboard-user {
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+
+
+  /* STATS */
+
+  .stat-card {
+    min-height: 170px;
+
+    padding: 20px;
+  }
+
+
+  .stat-card strong {
+    font-size: 36px;
+  }
+
+
+  /* MANAGEMENT */
+
+  .management-card {
+    min-height: 200px;
+
+    padding: 20px;
+  }
+
+
+  .management-card h3 {
+    font-size: 23px;
+  }
+}
+
+
+/* =========================================
+   EXTRA SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+  .admin-sidebar {
+    padding: 16px 14px;
+  }
+
+
+  .dashboard-logo-img {
+    width: 30px;
+    height: 30px;
+  }
+
+
+  .dashboard-logo-mark {
+    width: 30px;
+    height: 30px;
+  }
+
+
+  .dashboard-logo-text span {
+    font-size: 15px;
+  }
+
+
+  .dashboard-logo-text small {
+    font-size: 4.5px;
+  }
+
+
+  .dashboard-logout span {
+    display: none;
+  }
+
+
+  .dashboard-main {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }

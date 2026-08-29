@@ -1,8 +1,17 @@
+/* =========================
+   APP GLOBAL STYLES
+========================= */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+
+/* =========================
+   VARIABLES
+========================= */
 
 :root {
   --dark-green: #1e5631;
@@ -12,13 +21,98 @@
   --black: #171714;
 }
 
+
+/* =========================
+   APP
+========================= */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
 body {
   background: var(--cream);
   color: var(--black);
+
+  font-family: "Nunito Sans", sans-serif;
 }
+
+
+/* =========================
+   HEADINGS
+========================= */
 
 h1,
 h2,
-h3 {
-  font-family: 'Cormorant Garamond', serif;
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Unbounded", sans-serif;
+}
+
+
+/* =========================
+   DECORATIVE / SCRIPT TEXT
+========================= */
+
+.stalemate,
+.script-font {
+  font-family: "Stalemate", cursive;
+}
+
+
+/* =========================
+   FORM ELEMENTS
+========================= */
+
+button,
+input,
+textarea,
+select {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+a {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+  cursor: pointer;
+}
+
+
+/* =========================
+   IMAGES
+========================= */
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* =========================
+   TEXT SELECTION
+========================= */
+
+::selection {
+  background: var(--dark-green);
+  color: var(--cream);
 }

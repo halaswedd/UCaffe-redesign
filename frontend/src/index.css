@@ -1,12 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+* {
+  box-sizing: border-box;
+}
 
 html,
 body,
 #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
   min-height: 100%;
 }
 
+:root {
+  --cream: #f6f1e8;
+  --black: #171713;
+  --dark-green: #1e5631;
+  --coffee-brown: #9a7658;
+
+  --font-body: "Nunito Sans", sans-serif;
+  --font-title: "Unbounded", sans-serif;
+  --font-script: "Stalemate", cursive;
+}
+
 body {
-  margin: 0;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--black);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-body);
 }

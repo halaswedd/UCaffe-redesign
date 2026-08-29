@@ -1,29 +1,52 @@
+/* =========================================
+   OPENING / HERO
+========================================= */
+
 .opening {
   position: relative;
+
   width: 100%;
   height: 100svh;
   min-height: 650px;
+
   overflow: hidden;
+
   background: #1e5631;
   color: #f6f1e8;
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+
+/* =========================================
+   BACKGROUND IMAGE
+========================================= */
+
 .opening-image {
   position: absolute;
   inset: 0;
+
   background-image: url('../assets/images/cafe-opening.jpg');
+
   background-size: cover;
   background-position: center;
+
   transform: scale(1.05);
+
   animation: openingZoom 10s ease-out forwards;
 }
+
+
+/* =========================================
+   OVERLAY
+========================================= */
 
 .opening-overlay {
   position: absolute;
   inset: 0;
+
   background:
     linear-gradient(
       90deg,
@@ -33,68 +56,142 @@
     );
 }
 
+
+/* =========================================
+   CONTENT
+========================================= */
+
 .opening-content {
   position: relative;
+
   z-index: 2;
+
   width: min(90%, 900px);
+
   text-align: center;
+
   animation: contentReveal 1.2s ease forwards;
 }
 
+
+/* =========================================
+   SMALL LABEL
+========================================= */
+
 .opening-small {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
+
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
+
   letter-spacing: 0.35em;
+
   margin-bottom: 18px;
+
   opacity: 0.9;
+
+  text-transform: uppercase;
 }
+
+
+/* =========================================
+   MAIN TITLE
+========================================= */
 
 .opening-content h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(5rem, 15vw, 11rem);
-  font-weight: 500;
-  line-height: 0.8;
-  letter-spacing: 0.04em;
   margin: 0;
+
+  font-family: "Unbounded", sans-serif;
+
+  font-size: clamp(4rem, 13vw, 10rem);
+
+  font-weight: 400;
+
+  line-height: 0.9;
+
+  letter-spacing: -0.04em;
+
+  text-transform: uppercase;
 }
 
+
+/* =========================================
+   TAGLINE
+========================================= */
+
 .opening-tagline {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(0.8rem, 1.5vw, 1rem);
-  letter-spacing: 0.08em;
   margin-top: 28px;
+
+  font-family: "Nunito Sans", sans-serif;
+
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+
+  font-weight: 400;
+
+  letter-spacing: 0.08em;
+
+  line-height: 1.6;
+
   opacity: 0.85;
 }
 
+
+/* =========================================
+   EXPLORE BUTTON
+========================================= */
+
 .explore-btn {
   margin-top: 38px;
+
   padding: 15px 25px;
+
   border: 1px solid rgba(246, 241, 232, 0.65);
+
   background: rgba(246, 241, 232, 0.08);
+
   color: #f6f1e8;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+
+  font-family: "Nunito Sans", sans-serif;
+
   font-size: 0.72rem;
-  font-weight: 600;
+
+  font-weight: 700;
+
   letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+
   cursor: pointer;
+
   backdrop-filter: blur(8px);
+
   transition:
     background 0.35s ease,
     transform 0.35s ease,
     border-color 0.35s ease;
 }
 
+
+/* arrow */
+
 .explore-btn span {
   display: inline-block;
+
   margin-left: 12px;
+
   transition: transform 0.35s ease;
 }
 
+
+/* hover */
+
 .explore-btn:hover {
   background: #f6f1e8;
+
   color: #1e5631;
+
   border-color: #f6f1e8;
+
   transform: translateY(-3px);
 }
 
@@ -102,33 +199,60 @@
   transform: translate(3px, -3px);
 }
 
+
+/* =========================================
+   SCROLL INDICATOR
+========================================= */
+
 .scroll-indicator {
   position: absolute;
+
   z-index: 2;
+
   bottom: 30px;
   left: 50%;
+
   transform: translateX(-50%);
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 10px;
+
   opacity: 0.7;
 }
 
+
 .scroll-indicator span {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
+
   font-size: 0.55rem;
+
+  font-weight: 600;
+
   letter-spacing: 0.25em;
+
+  text-transform: uppercase;
 }
+
 
 .scroll-indicator div {
   width: 1px;
   height: 45px;
+
   background: #f6f1e8;
+
   animation: scrollLine 1.8s ease-in-out infinite;
 }
 
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
 @keyframes openingZoom {
+
   from {
     transform: scale(1.05);
   }
@@ -136,43 +260,64 @@
   to {
     transform: scale(1);
   }
+
 }
 
+
 @keyframes contentReveal {
+
   from {
     opacity: 0;
+
     transform: translateY(30px);
   }
 
   to {
     opacity: 1;
+
     transform: translateY(0);
   }
+
 }
 
+
 @keyframes scrollLine {
+
   0%,
   100% {
     transform: scaleY(0.5);
+
     transform-origin: top;
+
     opacity: 0.3;
   }
 
   50% {
     transform: scaleY(1);
+
     transform-origin: top;
+
     opacity: 1;
   }
+
 }
 
+
+/* =========================================
+   MOBILE
+========================================= */
+
 @media (max-width: 600px) {
+
   .opening {
     min-height: 600px;
   }
 
+
   .opening-image {
     background-position: center;
   }
+
 
   .opening-overlay {
     background:
@@ -184,22 +329,37 @@
       );
   }
 
+
   .opening-small {
     font-size: 0.6rem;
+
     letter-spacing: 0.25em;
   }
 
+
+  .opening-content h1 {
+    font-size: clamp(3.2rem, 17vw, 5rem);
+
+    line-height: 0.95;
+  }
+
+
   .opening-tagline {
     max-width: 280px;
+
     margin: 22px auto 0;
+
     line-height: 1.7;
   }
+
 
   .explore-btn {
     margin-top: 30px;
   }
 
+
   .scroll-indicator {
     bottom: 20px;
   }
+
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./AdminDashboard.css";
+import logo from "../assets/images/ucafe-logo.png";
 
 function AdminDashboard() {
   const [admin, setAdmin] = useState(null);
@@ -28,9 +29,22 @@ function AdminDashboard() {
       <aside className="admin-sidebar">
 
         <div className="dashboard-logo">
-          <span>UCAFFE</span>
-          <small>ADMIN PANEL</small>
+
+          <div className="dashboard-logo-mark">
+            <img
+              src={logo}
+              alt="UCAFFE Logo"
+              className="dashboard-logo-img"
+            />
+          </div>
+
+          <div className="dashboard-logo-text">
+            <span>UCAFFE</span>
+            <small>ADMIN PANEL</small>
+          </div>
+
         </div>
+
 
         <nav className="dashboard-nav">
 
@@ -51,6 +65,7 @@ function AdminDashboard() {
 
         </nav>
 
+
         <button
           className="dashboard-logout"
           onClick={logout}
@@ -69,6 +84,7 @@ function AdminDashboard() {
         <header className="dashboard-header">
 
           <div>
+
             <span className="dashboard-eyebrow">
               UCAFFE / ADMINISTRATION
             </span>
@@ -77,7 +93,11 @@ function AdminDashboard() {
               Good evening,
               <em> Admin.</em>
             </h1>
+
           </div>
+
+
+          {/* ADMIN USER */}
 
           <div className="dashboard-user">
 
@@ -85,12 +105,16 @@ function AdminDashboard() {
               {admin?.email?.charAt(0).toUpperCase() || "A"}
             </div>
 
-            <div>
+            <div className="dashboard-user-info">
+
               <strong>
-                {admin?.email || "Administrator"}
+                Administrator
               </strong>
 
-              <span>Administrator</span>
+              <span>
+                {admin?.email || "Admin account"}
+              </span>
+
             </div>
 
           </div>
@@ -103,6 +127,7 @@ function AdminDashboard() {
         <section className="dashboard-stats">
 
           <div className="stat-card">
+
             <span>01</span>
 
             <small>CATEGORIES</small>
@@ -110,9 +135,12 @@ function AdminDashboard() {
             <strong>05</strong>
 
             <p>Menu sections</p>
+
           </div>
 
+
           <div className="stat-card">
+
             <span>02</span>
 
             <small>MENU ITEMS</small>
@@ -120,18 +148,7 @@ function AdminDashboard() {
             <strong>24</strong>
 
             <p>Available items</p>
-          </div>
 
-          <div className="stat-card">
-            <span>03</span>
-
-            <small>STATUS</small>
-
-            <strong className="online">
-              LIVE
-            </strong>
-
-            <p>Menu is online</p>
           </div>
 
         </section>
@@ -144,13 +161,16 @@ function AdminDashboard() {
           <div className="section-heading">
 
             <div>
+
               <span>MANAGEMENT</span>
 
               <h2>
                 Manage your
                 <em> menu.</em>
               </h2>
+
             </div>
+
 
             <p>
               Keep your UCAFFE menu
@@ -167,12 +187,14 @@ function AdminDashboard() {
               <span>01</span>
 
               <div>
+
                 <h3>Categories</h3>
 
                 <p>
                   Add, edit or remove
                   menu categories.
                 </p>
+
               </div>
 
               <b>↗</b>
@@ -185,12 +207,14 @@ function AdminDashboard() {
               <span>02</span>
 
               <div>
+
                 <h3>Menu Items</h3>
 
                 <p>
                   Manage dishes,
                   drinks and prices.
                 </p>
+
               </div>
 
               <b>↗</b>
@@ -203,12 +227,14 @@ function AdminDashboard() {
               <span>03</span>
 
               <div>
+
                 <h3>Images</h3>
 
                 <p>
                   Update category
                   images and visuals.
                 </p>
+
               </div>
 
               <b>↗</b>

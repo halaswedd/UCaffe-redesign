@@ -1,5 +1,5 @@
 /* =========================================
-   NAVBAR
+   NAVBAR — U-CAFFE
 ========================================= */
 
 .navbar {
@@ -20,7 +20,7 @@
 
   box-sizing: border-box;
 
-  color: #f6f1e8;
+  color: var(--cream);
 
   background: transparent;
 
@@ -40,11 +40,13 @@
 .navbar.navbar-scrolled {
   background: rgba(246, 241, 232, 0.94);
 
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 25px rgba(0, 0, 0, 0.06);
 
-  color: #1e5631;
+  color: var(--dark-green);
 }
 
 
@@ -75,14 +77,11 @@
 
   object-fit: contain;
 
-  /*
-    Default:
-    WHITE logo over Opening image
-  */
+  /* White logo over hero */
   filter: brightness(0) invert(1);
 
   transition:
-    transform 0.3s ease,
+    transform 0.35s ease,
     filter 0.45s ease;
 }
 
@@ -91,10 +90,7 @@
 }
 
 
-/*
-   When scrolled:
-   return to original logo colors
-*/
+/* Original logo colors after scroll */
 
 .navbar.navbar-scrolled .nav-logo img {
   filter: none;
@@ -120,20 +116,20 @@
   display: inline-flex;
   align-items: center;
 
-  color: #f6f1e8;
+  color: var(--cream);
 
   text-decoration: none;
 
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
+  font-family: var(--font-body);
+
+  font-size: 11px;
+  font-weight: 800;
 
   letter-spacing: 0.14em;
+
   text-transform: uppercase;
 
   white-space: nowrap;
-
-  opacity: 1;
 
   transition:
     color 0.45s ease,
@@ -141,33 +137,34 @@
 }
 
 
-/*
-   Scrolled links
-*/
+/* =========================================
+   SCROLLED LINKS
+========================================= */
 
 .navbar.navbar-scrolled .nav-links a {
-  color: #1e5631;
+  color: var(--dark-green);
 }
 
 
 /* =========================================
-   UNDERLINE
+   LINK UNDERLINE
 ========================================= */
 
 .nav-links a::after {
-  content: '';
+  content: "";
 
   position: absolute;
 
   left: 0;
-  bottom: -6px;
+  bottom: -7px;
 
   width: 0;
   height: 1px;
 
   background: currentColor;
 
-  transition: width 0.3s ease;
+  transition:
+    width 0.35s ease;
 }
 
 .nav-links a:hover {
@@ -201,7 +198,11 @@
   }
 
   .nav-links {
-    gap: 26px;
+    gap: 25px;
+  }
+
+  .nav-links a {
+    font-size: 10px;
   }
 }
 
@@ -218,6 +219,9 @@
     padding: 0 20px;
   }
 
+
+  /* Logo */
+
   .nav-logo {
     width: 38px;
     height: 38px;
@@ -228,9 +232,17 @@
     height: 40px;
   }
 
+
+  /* Hide desktop links */
+
   .nav-links {
     display: none;
   }
+
+
+  /* =====================================
+     HAMBURGER
+  ===================================== */
 
   .menu-toggle {
     display: flex;
@@ -240,7 +252,7 @@
 
     padding: 0;
 
-    border: 1px solid rgb(250, 249, 248);
+    border: 1px solid rgba(246, 241, 232, 0.8);
 
     border-radius: 50%;
 
@@ -258,23 +270,33 @@
     pointer-events: auto;
 
     transition:
-      border-color 0.45s ease,
-      background 0.45s ease;
+      border-color 0.4s ease,
+      background 0.4s ease,
+      transform 0.3s ease;
   }
+
+  .menu-toggle:hover {
+    transform: scale(1.05);
+  }
+
+
+  /* Hamburger lines */
 
   .menu-toggle span {
     width: 13px;
     height: 1px;
 
-    background: #f6f1e8;
+    background: var(--cream);
 
-    transition: background 0.45s ease;
+    transition:
+      background 0.45s ease,
+      transform 0.3s ease;
   }
 
 
-  /*
-     Mobile after scroll
-  */
+  /* =====================================
+     MOBILE AFTER SCROLL
+  ===================================== */
 
   .navbar.navbar-scrolled .menu-toggle {
     border-color: rgba(30, 86, 49, 0.45);
@@ -283,6 +305,58 @@
   }
 
   .navbar.navbar-scrolled .menu-toggle span {
-    background: #1e5631;
+    background: var(--dark-green);
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 420px) {
+
+  .navbar {
+    padding: 0 16px;
+  }
+
+  .nav-logo img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .menu-toggle {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.nav-links a:focus-visible,
+.menu-toggle:focus-visible,
+.nav-logo:focus-visible {
+  outline: 1px solid var(--coffee-brown);
+
+  outline-offset: 5px;
+}
+
+
+/* =========================================
+   REDUCE MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .navbar,
+  .nav-logo img,
+  .nav-links a,
+  .nav-links a::after,
+  .menu-toggle,
+  .menu-toggle span {
+    transition: none;
   }
 }
