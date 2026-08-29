@@ -1,118 +1,718 @@
-/* =========================
-   APP GLOBAL STYLES
-========================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
-/* =========================
-   VARIABLES
-========================= */
-
-:root {
-  --dark-green: #1e5631;
-  --coffee-brown: #6b4226;
-  --cream: #f6f1e8;
-  --off-white: #fcfbf7;
-  --black: #171714;
-}
-
-
-/* =========================
-   APP
-========================= */
+/* =========================================
+   U-CAFE APP
+========================================= */
 
 #root {
   width: 100%;
-  min-height: 100vh;
 }
 
 
-/* =========================
-   BODY
-========================= */
+/* =========================================
+   INFORMATION SECTION
+========================================= */
 
-body {
+.info-section {
+  position: relative;
+
+  width: 100%;
+
+  padding: 110px 6vw 100px;
+
   background: var(--cream);
+
+  color: var(--dark-green);
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   SUBTLE DECORATION
+========================================= */
+
+.info-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  top: -220px;
+  right: -180px;
+
+  border: 1px solid rgba(30, 86, 49, 0.07);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.info-section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  bottom: -180px;
+  left: -150px;
+
+  border: 1px solid rgba(154, 118, 88, 0.08);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.info-header {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 700px;
+
+  margin: 0 auto 55px;
+
+  text-align: center;
+}
+
+
+.info-header > span {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: var(--coffee-brown);
+
+  font-family: var(--font-body);
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.3em;
+
+  text-transform: uppercase;
+}
+
+
+.info-header h2 {
+  margin: 0;
+
+  color: var(--dark-green);
+
+  font-family: var(--font-title);
+
+  font-size: clamp(2.8rem, 6vw, 5.8rem);
+
+  font-weight: 500;
+
+  line-height: 0.9;
+
+  letter-spacing: -0.055em;
+
+  text-transform: uppercase;
+}
+
+
+.info-header h2 em {
+  color: var(--coffee-brown);
+
+  font-family: var(--font-script);
+
+  font-size: 1.25em;
+
+  font-weight: 400;
+
+  font-style: normal;
+
+  letter-spacing: 0;
+}
+
+
+.info-header p {
+  max-width: 420px;
+
+  margin: 22px auto 0;
+
   color: var(--black);
 
-  font-family: "Nunito Sans", sans-serif;
+  font-family: var(--font-body);
+
+  font-size: 11px;
+
+  line-height: 1.7;
+
+  letter-spacing: 0.04em;
+
+  opacity: 0.55;
 }
 
 
-/* =========================
-   HEADINGS
-========================= */
+/* =========================================
+   INFORMATION GRID
+========================================= */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Unbounded", sans-serif;
+.info-grid {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  max-width: 1050px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 12px;
 }
 
 
-/* =========================
-   DECORATIVE / SCRIPT TEXT
-========================= */
+/* =========================================
+   INFORMATION CARD
+========================================= */
 
-.stalemate,
-.script-font {
-  font-family: "Stalemate", cursive;
+.info-card {
+  min-height: 190px;
+
+  padding: 20px;
+
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  text-decoration: none;
+
+  border:
+    1px solid rgba(30, 86, 49, 0.13);
+
+  border-radius: 12px;
+
+  background:
+    rgba(255, 255, 255, 0.38);
+
+  color: var(--dark-green);
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 
-/* =========================
-   FORM ELEMENTS
-========================= */
+/* =========================================
+   ICON
+========================================= */
 
-button,
-input,
-textarea,
-select {
-  font-family: "Nunito Sans", sans-serif;
+.info-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid rgba(30, 86, 49, 0.2);
+
+  border-radius: 50%;
+
+  color: var(--coffee-brown);
+
+  font-family: var(--font-body);
+
+  font-size: 17px;
+
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease;
 }
 
 
-/* =========================
-   LINKS
-========================= */
+/* =========================================
+   CARD CONTENT
+========================================= */
 
-a {
-  font-family: "Nunito Sans", sans-serif;
+.info-card-content {
+  margin-top: auto;
 }
 
 
-/* =========================
-   BUTTON
-========================= */
-
-button {
-  cursor: pointer;
-}
-
-
-/* =========================
-   IMAGES
-========================= */
-
-img {
-  max-width: 100%;
+.info-card-content small {
   display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--coffee-brown);
+
+  font-family: var(--font-body);
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
 }
 
 
-/* =========================
-   TEXT SELECTION
-========================= */
+.info-card-content h3 {
+  margin: 0;
 
-::selection {
+  color: var(--dark-green);
+
+  font-family: var(--font-title);
+
+  font-size: 17px;
+
+  font-weight: 500;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.025em;
+
+  text-transform: uppercase;
+}
+
+
+.info-card-content p {
+  margin: 7px 0 0;
+
+  color: var(--black);
+
+  font-family: var(--font-body);
+
+  font-size: 8px;
+
+  line-height: 1.5;
+
+  opacity: 0.5;
+}
+
+
+/* =========================================
+   ARROW
+========================================= */
+
+.info-card > b {
+  position: absolute;
+
+  top: 19px;
+  right: 19px;
+
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid rgba(30, 86, 49, 0.15);
+
+  border-radius: 50%;
+
+  color: var(--dark-green);
+
+  font-size: 13px;
+
+  font-weight: 400;
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+/* =========================================
+   CLICKABLE HOVER
+========================================= */
+
+a.info-card:hover {
+  transform: translateY(-6px);
+
   background: var(--dark-green);
+
+  border-color: var(--dark-green);
+
+  box-shadow:
+    0 18px 35px rgba(30, 86, 49, 0.16);
+
   color: var(--cream);
+}
+
+
+a.info-card:hover .info-icon {
+  background: var(--coffee-brown);
+
+  border-color: var(--coffee-brown);
+
+  color: var(--cream);
+
+  transform: scale(1.06);
+}
+
+
+a.info-card:hover .info-card-content small {
+  color: var(--coffee-brown);
+}
+
+
+a.info-card:hover .info-card-content h3 {
+  color: var(--cream);
+}
+
+
+a.info-card:hover .info-card-content p {
+  color: rgba(246, 241, 232, 0.55);
+}
+
+
+a.info-card:hover > b {
+  background: var(--cream);
+
+  border-color: var(--cream);
+
+  color: var(--dark-green);
+
+  transform: translate(2px, -2px);
+}
+
+
+/* =========================================
+   HOURS CARD
+========================================= */
+
+.info-hours {
+  cursor: default;
+}
+
+
+.info-hours .info-icon {
+  color: var(--coffee-brown);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.site-footer {
+  width: 100%;
+
+  padding: 0 6vw 25px;
+
+  background: var(--cream);
+
+  color: var(--black);
+}
+
+
+/* =========================================
+   FOOTER LINE
+========================================= */
+
+.footer-line {
+  width: 100%;
+
+  max-width: 1050px;
+
+  height: 1px;
+
+  margin: 0 auto;
+  
+  background:
+    rgba(30, 86, 49, 0.15);
+}
+
+
+/* =========================================
+   FOOTER BOTTOM
+========================================= */
+
+.footer-bottom {
+  width: 100%;
+
+  max-width: 1050px;
+
+  margin: 20px auto 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  font-family: var(--font-body);
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(23, 23, 19, 0.4);
+}
+
+
+.footer-bottom strong {
+  color: var(--dark-green);
+
+  font-weight: 800;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  .info-section {
+    padding:
+      90px 5vw 80px;
+  }
+
+
+  .info-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 12px;
+  }
+
+
+  .info-card {
+    min-height: 170px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .info-section {
+    padding:
+      80px 18px 70px;
+  }
+
+
+  .info-header {
+    margin-bottom: 40px;
+  }
+
+
+  .info-header > span {
+    font-size: 8px;
+
+    letter-spacing: 0.24em;
+  }
+
+
+  .info-header h2 {
+    font-size: 3rem;
+  }
+
+
+  .info-header p {
+    max-width: 300px;
+
+    font-size: 10px;
+  }
+
+
+  .info-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 9px;
+  }
+
+
+  .info-card {
+    min-height: 160px;
+
+    padding: 16px;
+
+    border-radius: 10px;
+  }
+
+
+  .info-icon {
+    width: 34px;
+    height: 34px;
+
+    font-size: 15px;
+  }
+
+
+  .info-card > b {
+    top: 15px;
+    right: 15px;
+
+    width: 25px;
+    height: 25px;
+
+    font-size: 11px;
+  }
+
+
+  .info-card-content small {
+    font-size: 6px;
+
+    letter-spacing: 0.15em;
+  }
+
+
+  .info-card-content h3 {
+    font-size: 14px;
+  }
+
+
+  .info-card-content p {
+    font-size: 7px;
+  }
+
+
+  .site-footer {
+    padding:
+      0 18px 20px;
+  }
+
+
+  .footer-bottom {
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    text-align: center;
+
+    font-size: 6px;
+
+    line-height: 1.5;
+  }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+  .info-section {
+    padding:
+      70px 15px 60px;
+  }
+
+
+  .info-header h2 {
+    font-size: 2.6rem;
+  }
+
+
+  .info-grid {
+    gap: 8px;
+  }
+
+
+  .info-card {
+    min-height: 145px;
+
+    padding: 13px;
+  }
+
+
+  .info-icon {
+    width: 31px;
+    height: 31px;
+
+    font-size: 13px;
+  }
+
+
+  .info-card > b {
+    top: 12px;
+    right: 12px;
+
+    width: 23px;
+    height: 23px;
+  }
+
+
+  .info-card-content h3 {
+    font-size: 12px;
+  }
+
+
+  .info-card-content p {
+    font-size: 6.5px;
+  }
+
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.info-card:focus-visible {
+  outline:
+    1px solid var(--coffee-brown);
+
+  outline-offset: 4px;
+}
+
+
+/* =========================================
+   REDUCE MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .info-card,
+  .info-icon,
+  .info-card > b {
+    transition: none;
+  }
+
 }

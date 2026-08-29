@@ -22,10 +22,17 @@ function Opening() {
           A place to gather, sip and stay.
         </p>
 
-        <button className="explore-btn">
-          EXPLORE MENU
-          <span>↗</span>
-        </button>
+        <button
+  className="explore-btn"
+  onClick={() => {
+    document.getElementById("menu")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }}
+>
+  EXPLORE MENU
+  <span>↗</span>
+</button>
 
       </div>
 
