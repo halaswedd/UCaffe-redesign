@@ -2,84 +2,74 @@ import { useEffect, useState } from "react";
 import "./AdminDashboard.css";
 import logo from "../assets/images/ucafe-logo.png";
 
+import CategoriesManager from "./CategoriesManager";
+
+
 function AdminDashboard() {
+
   const [admin, setAdmin] = useState(null);
 
+  const [activePage, setActivePage] = useState("dashboard");
+
+
+  /* =========================================
+     CHECK ADMIN LOGIN
+  ========================================= */
+
   useEffect(() => {
+
     const savedAdmin = localStorage.getItem("admin");
 
     if (!savedAdmin) {
+
       window.location.href = "/admin";
+
       return;
     }
 
     setAdmin(JSON.parse(savedAdmin));
+
   }, []);
 
+
+  /* =========================================
+     LOGOUT
+  ========================================= */
+
   const logout = () => {
+
     localStorage.removeItem("admin");
+
     window.location.href = "/admin";
   };
 
-  return (
-    <div className="admin-dashboard">
 
-      {/* SIDEBAR */}
+  /* =========================================
+     NAVIGATION
+  ========================================= */
 
-      <aside className="admin-sidebar">
+  const goTo = (page) => {
 
-        <div className="dashboard-logo">
+    setActivePage(page);
 
-          <div className="dashboard-logo-mark">
-            <img
-              src={logo}
-              alt="UCAFFE Logo"
-              className="dashboard-logo-img"
-            />
-          </div>
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
 
-          <div className="dashboard-logo-text">
-            <span>UCAFFE</span>
-            <small>ADMIN PANEL</small>
-          </div>
-
-        </div>
+  };
 
 
-        <nav className="dashboard-nav">
+  /* =========================================
+     DASHBOARD
+  ========================================= */
 
-          <button className="dashboard-nav-item active">
-            <span>01</span>
-            Dashboard
-          </button>
+  const DashboardHome = () => {
 
-          <button className="dashboard-nav-item">
-            <span>02</span>
-            Categories
-          </button>
+    return (
+      <>
 
-          <button className="dashboard-nav-item">
-            <span>03</span>
-            Menu Items
-          </button>
-
-        </nav>
-
-
-        <button
-          className="dashboard-logout"
-          onClick={logout}
-        >
-          <span>LOG OUT</span>
-          <b>↗</b>
-        </button>
-
-      </aside>
-
-
-      {/* MAIN */}
-
-      <main className="dashboard-main">
+        {/* HEADER */}
 
         <header className="dashboard-header">
 
@@ -102,8 +92,13 @@ function AdminDashboard() {
           <div className="dashboard-user">
 
             <div className="dashboard-avatar">
-              {admin?.email?.charAt(0).toUpperCase() || "A"}
+
+              {admin?.email
+                ?.charAt(0)
+                .toUpperCase() || "A"}
+
             </div>
+
 
             <div className="dashboard-user-info">
 
@@ -130,11 +125,17 @@ function AdminDashboard() {
 
             <span>01</span>
 
-            <small>CATEGORIES</small>
+            <small>
+              CATEGORIES
+            </small>
 
-            <strong>05</strong>
+            <strong>
+              05
+            </strong>
 
-            <p>Menu sections</p>
+            <p>
+              Menu sections
+            </p>
 
           </div>
 
@@ -143,11 +144,17 @@ function AdminDashboard() {
 
             <span>02</span>
 
-            <small>MENU ITEMS</small>
+            <small>
+              MENU ITEMS
+            </small>
 
-            <strong>24</strong>
+            <strong>
+              24
+            </strong>
 
-            <p>Available items</p>
+            <p>
+              Available items
+            </p>
 
           </div>
 
@@ -162,7 +169,9 @@ function AdminDashboard() {
 
             <div>
 
-              <span>MANAGEMENT</span>
+              <span>
+                MANAGEMENT
+              </span>
 
               <h2>
                 Manage your
@@ -182,13 +191,24 @@ function AdminDashboard() {
 
           <div className="management-grid">
 
-            <button className="management-card">
 
-              <span>01</span>
+            {/* CATEGORIES */}
+
+            <button
+              className="management-card"
+              type="button"
+              onClick={() => goTo("categories")}
+            >
+
+              <span>
+                01
+              </span>
 
               <div>
 
-                <h3>Categories</h3>
+                <h3>
+                  Categories
+                </h3>
 
                 <p>
                   Add, edit or remove
@@ -197,18 +217,30 @@ function AdminDashboard() {
 
               </div>
 
-              <b>↗</b>
+              <b>
+                ↗
+              </b>
 
             </button>
 
 
-            <button className="management-card">
+            {/* MENU ITEMS */}
 
-              <span>02</span>
+            <button
+              className="management-card"
+              type="button"
+              onClick={() => goTo("items")}
+            >
+
+              <span>
+                02
+              </span>
 
               <div>
 
-                <h3>Menu Items</h3>
+                <h3>
+                  Menu Items
+                </h3>
 
                 <p>
                   Manage dishes,
@@ -217,18 +249,30 @@ function AdminDashboard() {
 
               </div>
 
-              <b>↗</b>
+              <b>
+                ↗
+              </b>
 
             </button>
 
 
-            <button className="management-card">
+            {/* IMAGES */}
 
-              <span>03</span>
+            <button
+              className="management-card"
+              type="button"
+              onClick={() => goTo("images")}
+            >
+
+              <span>
+                03
+              </span>
 
               <div>
 
-                <h3>Images</h3>
+                <h3>
+                  Images
+                </h3>
 
                 <p>
                   Update category
@@ -237,7 +281,9 @@ function AdminDashboard() {
 
               </div>
 
-              <b>↗</b>
+              <b>
+                ↗
+              </b>
 
             </button>
 
@@ -245,10 +291,241 @@ function AdminDashboard() {
 
         </section>
 
+      </>
+    );
+
+  };
+
+
+  /* =========================================
+     PAGE
+  ========================================= */
+
+  return (
+
+    <div className="admin-dashboard">
+
+
+      {/* =====================================
+         SIDEBAR
+      ===================================== */}
+
+      <aside className="admin-sidebar">
+
+
+        {/* LOGO */}
+
+        <div className="dashboard-logo">
+
+          <div className="dashboard-logo-mark">
+
+            <img
+              src={logo}
+              alt="UCAFFE Logo"
+              className="dashboard-logo-img"
+            />
+
+          </div>
+
+
+          <div className="dashboard-logo-text">
+
+            <span>
+              UCAFFE
+            </span>
+
+            <small>
+              ADMIN PANEL
+            </small>
+
+          </div>
+
+        </div>
+
+
+        {/* NAVIGATION */}
+
+        <nav className="dashboard-nav">
+
+
+          {/* DASHBOARD */}
+
+          <button
+            type="button"
+            className={`dashboard-nav-item ${
+              activePage === "dashboard"
+                ? "active"
+                : ""
+            }`}
+            onClick={() => goTo("dashboard")}
+          >
+
+            <span>
+              01
+            </span>
+
+            Dashboard
+
+          </button>
+
+
+          {/* CATEGORIES */}
+
+          <button
+            type="button"
+            className={`dashboard-nav-item ${
+              activePage === "categories"
+                ? "active"
+                : ""
+            }`}
+            onClick={() => goTo("categories")}
+          >
+
+            <span>
+              02
+            </span>
+
+            Categories
+
+          </button>
+
+
+          {/* MENU ITEMS */}
+
+          <button
+            type="button"
+            className={`dashboard-nav-item ${
+              activePage === "items"
+                ? "active"
+                : ""
+            }`}
+            onClick={() => goTo("items")}
+          >
+
+            <span>
+              03
+            </span>
+
+            Menu Items
+
+          </button>
+
+        </nav>
+
+
+        {/* LOGOUT */}
+
+        <button
+          type="button"
+          className="dashboard-logout"
+          onClick={logout}
+        >
+
+          <span>
+            LOG OUT
+          </span>
+
+          <b>
+            ↗
+          </b>
+
+        </button>
+
+      </aside>
+
+
+      {/* =====================================
+         MAIN
+      ===================================== */}
+
+      <main className="dashboard-main">
+
+
+        {/* DASHBOARD */}
+
+        {activePage === "dashboard" && (
+          <DashboardHome />
+        )}
+
+
+        {/* CATEGORIES */}
+
+        {activePage === "categories" && (
+
+          <CategoriesManager />
+
+        )}
+
+
+        {/* MENU ITEMS - LATER */}
+
+        {activePage === "items" && (
+
+          <div className="coming-soon">
+
+            <span>
+              MENU / ITEMS
+            </span>
+
+            <h2>
+              Menu items
+              <em> coming soon.</em>
+            </h2>
+
+            <p>
+              This section will be used to
+              manage dishes, drinks and prices.
+            </p>
+
+            <button
+              type="button"
+              onClick={() => goTo("dashboard")}
+            >
+              ← BACK TO DASHBOARD
+            </button>
+
+          </div>
+
+        )}
+
+
+        {/* IMAGES - LATER */}
+
+        {activePage === "images" && (
+
+          <div className="coming-soon">
+
+            <span>
+              MENU / IMAGES
+            </span>
+
+            <h2>
+              Image manager
+              <em> coming soon.</em>
+            </h2>
+
+            <p>
+              Category images will be managed
+              from this section.
+            </p>
+
+            <button
+              type="button"
+              onClick={() => goTo("dashboard")}
+            >
+              ← BACK TO DASHBOARD
+            </button>
+
+          </div>
+
+        )}
+
       </main>
 
     </div>
+
   );
+
 }
 
 export default AdminDashboard;
