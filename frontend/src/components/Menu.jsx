@@ -8,7 +8,6 @@ const ITEMS_API =
   'http://localhost/UCaffe-redesign/backend/items/get.php';
 
 function Menu({ category, onBack }) {
-
   const [categories, setCategories] = useState([]);
   const [itemsData, setItemsData] = useState([]);
 
@@ -18,11 +17,8 @@ function Menu({ category, onBack }) {
   const [error, setError] = useState('');
 
   useEffect(() => {
-
     const loadMenu = async () => {
-
       try {
-
         setLoading(true);
         setError('');
 
@@ -48,80 +44,46 @@ function Menu({ category, onBack }) {
 
         setCategories(categoriesResult.data);
         setItemsData(itemsResult.data);
-
       } catch (err) {
-
         console.error(err);
 
         setError(
           'Could not load the menu. Please try again.'
         );
-
       } finally {
-
         setLoading(false);
-
       }
     };
 
     loadMenu();
-
   }, []);
 
-
-  /*
-   * Find subcategories belonging
-   * to the selected main category
-   */
   const subcategories = categories.filter(
     (cat) =>
       Number(cat.parent_id) === Number(category.id)
   );
 
-
-  /*
-   * Select first subcategory automatically
-   */
   useEffect(() => {
-
     if (subcategories.length > 0) {
-
       setSelectedSubcategory(subcategories[0]);
-
     } else {
-
       setSelectedSubcategory(null);
-
     }
-
   }, [category.id, categories.length]);
 
-
-  /*
-   * Get items
-   *
-   * If a subcategory is selected:
-   * show items belonging to that subcategory.
-   *
-   * Otherwise:
-   * show items belonging directly to the main category.
-   */
   const currentCategoryId = selectedSubcategory
     ? selectedSubcategory.id
     : category.id;
 
-
   const items = itemsData.filter(
     (item) =>
-      Number(item.category_id) === Number(currentCategoryId)
+      Number(item.category_id) ===
+      Number(currentCategoryId)
   );
 
-
   if (loading) {
-
     return (
       <section className="menu-page">
-
         <button
           className="menu-back"
           onClick={onBack}
@@ -130,34 +92,23 @@ function Menu({ category, onBack }) {
         </button>
 
         <div className="menu-page-header">
-
           <span>OUR MENU</span>
 
           <h1>{category.name}</h1>
-
-          <div className="menu-title-line"></div>
-
         </div>
 
         <div className="menu-items">
-
           <div className="items-heading">
             <span>Loading...</span>
           </div>
-
         </div>
-
       </section>
     );
-
   }
 
-
   if (error) {
-
     return (
       <section className="menu-page">
-
         <button
           className="menu-back"
           onClick={onBack}
@@ -166,36 +117,24 @@ function Menu({ category, onBack }) {
         </button>
 
         <div className="menu-page-header">
-
           <span>OUR MENU</span>
 
           <h1>{category.name}</h1>
-
-          <div className="menu-title-line"></div>
-
         </div>
 
         <div className="menu-items">
-
           <div className="items-heading">
-
             <span>{error}</span>
-
           </div>
-
         </div>
-
       </section>
     );
-
   }
-
 
   return (
     <section className="menu-page">
 
       {/* BACK */}
-
       <button
         className="menu-back"
         onClick={onBack}
@@ -203,28 +142,17 @@ function Menu({ category, onBack }) {
         ← MENU
       </button>
 
-
       {/* HEADER */}
-
       <div className="menu-page-header">
-
         <span>OUR MENU</span>
 
         <h1>{category.name}</h1>
-
-        <div className="menu-title-line"></div>
-
       </div>
 
-
       {/* SUBCATEGORIES */}
-
       {subcategories.length > 0 && (
-
         <div className="menu-filters">
-
           {subcategories.map((subcategory) => (
-
             <button
               key={subcategory.id}
               className={
@@ -238,20 +166,14 @@ function Menu({ category, onBack }) {
             >
               {subcategory.name}
             </button>
-
           ))}
-
         </div>
-
       )}
 
-
       {/* ITEMS */}
-
       <div className="menu-items">
 
         <div className="items-heading">
-
           <span>
             {selectedSubcategory
               ? selectedSubcategory.name
@@ -261,53 +183,34 @@ function Menu({ category, onBack }) {
           <span>
             {items.length} ITEMS
           </span>
-
         </div>
 
-
         <div className="items-list">
-
           {items.length > 0 ? (
-
             items.map((item, index) => (
-
               <div
                 className="menu-item"
                 key={item.id}
               >
-
                 <span className="item-number">
                   {String(index + 1).padStart(2, '0')}
                 </span>
 
-                <h3>
-                  {item.name}
-                </h3>
+                <h3>{item.name}</h3>
 
                 <strong>
                   ${Number(item.price).toFixed(2)}
                 </strong>
-
               </div>
-
             ))
-
           ) : (
-
             <div className="menu-item">
-
-              <h3>
-                No items available yet.
-              </h3>
-
+              <h3>No items available yet.</h3>
             </div>
-
           )}
-
         </div>
 
       </div>
-
     </section>
   );
 }

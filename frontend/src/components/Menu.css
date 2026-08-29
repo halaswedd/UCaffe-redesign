@@ -8,89 +8,53 @@
 
 .menu-page {
   position: relative;
-
   width: 100%;
   min-height: 100vh;
-
   padding: 120px 6vw 110px;
-
   background: var(--cream);
   color: var(--dark-green);
-
   overflow: hidden;
 }
 
-
-/* =========================================
-   SUBTLE BACKGROUND DETAIL
-========================================= */
-
 .menu-page::before {
   content: "";
-
   position: absolute;
-
   width: 420px;
   height: 420px;
-
   top: -180px;
   right: -160px;
-
   border: 1px solid rgba(30, 86, 49, 0.08);
-
   border-radius: 50%;
-
   pointer-events: none;
 }
 
 .menu-page::after {
   content: "";
-
   position: absolute;
-
   width: 260px;
   height: 260px;
-
   bottom: -130px;
   left: -120px;
-
   border: 1px solid rgba(154, 118, 88, 0.1);
-
   border-radius: 50%;
-
   pointer-events: none;
 }
 
-
-/* =========================================
-   BACK BUTTON
-========================================= */
-
+/* BACK BUTTON */
 .menu-back {
   position: relative;
   z-index: 2;
-
   border: none;
   background: transparent;
-
   padding: 0;
-
   color: var(--dark-green);
-
   font-family: var(--font-body);
-
   font-size: 10px;
   font-weight: 700;
-
   letter-spacing: 0.2em;
-
   text-transform: uppercase;
-
   cursor: pointer;
-
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .menu-back:hover {
@@ -98,60 +62,34 @@
   opacity: 0.55;
 }
 
-
-/* =========================================
-   MENU HEADER
-========================================= */
-
+/* MENU HEADER */
 .menu-page-header {
   position: relative;
   z-index: 1;
-
   margin-top: 55px;
-
   text-align: center;
 }
 
-
-/* small label */
-
 .menu-page-header > span {
   display: block;
-
   color: var(--coffee-brown);
-
   font-family: var(--font-body);
-
   font-size: 9px;
   font-weight: 800;
-
   letter-spacing: 0.32em;
-
   text-transform: uppercase;
-
   opacity: 0.8;
 }
 
-
-/* MAIN TITLE */
-
 .menu-page-header h1 {
   margin: 20px 0 0;
-
   color: var(--dark-green);
-
   font-family: var(--font-title);
-
   font-size: clamp(4.5rem, 11vw, 9.5rem);
-
   font-weight: 700;
-
   line-height: 0.82;
-
   text-transform: uppercase;
-
   letter-spacing: -0.055em;
-
   transition: letter-spacing 0.5s ease;
 }
 
@@ -159,157 +97,69 @@
   letter-spacing: -0.035em;
 }
 
-
-/* =========================================
-   OPTIONAL SCRIPT ACCENT
-========================================= */
-
+/* OPTIONAL SCRIPT ACCENT */
 .menu-script {
   display: block;
-
   margin-top: -8px;
-
   color: var(--coffee-brown);
-
   font-family: var(--font-script);
-
   font-size: clamp(2.8rem, 5vw, 4.5rem);
-
   line-height: 0.7;
-
   transform: rotate(-4deg);
 }
 
-
-/* =========================================
-   TITLE DECORATION
-========================================= */
-
+/* TITLE LINE REMOVED */
 .menu-title-line {
-  position: relative;
-
-  width: 48px;
-  height: 1px;
-
-  margin: 38px auto 0;
-
-  background: var(--coffee-brown);
-
-  transition: width 0.4s ease;
+  display: none;
 }
 
-.menu-page-header:hover .menu-title-line {
-  width: 75px;
-}
-
-.menu-title-line::before,
-.menu-title-line::after {
-  content: "";
-
-  position: absolute;
-
-  top: 50%;
-
-  width: 5px;
-  height: 5px;
-
-  border: 1px solid var(--coffee-brown);
-
-  border-radius: 50%;
-
-  transform: translateY(-50%);
-}
-
-.menu-title-line::before {
-  left: -13px;
-}
-
-.menu-title-line::after {
-  right: -13px;
-}
-
-
-/* =========================================
-   SUBCATEGORY FILTERS
-========================================= */
-
+/* SUBCATEGORY FILTERS */
 .menu-filters {
   position: relative;
   z-index: 2;
-
   max-width: 1050px;
-
   margin: 70px auto 60px;
-
   display: flex;
-
   justify-content: center;
   align-items: center;
-
   flex-wrap: wrap;
-
   gap: 10px;
 }
 
-
-/* =========================================
-   FILTER BUTTON
-========================================= */
-
+/* FILTER BUTTON */
 .menu-filter {
   position: relative;
-
   padding: 12px 22px;
-
   border: 1px solid rgba(30, 86, 49, 0.25);
-
   border-radius: 999px;
-
   background: transparent;
-
   color: var(--dark-green);
-
   font-family: var(--font-body);
-
   font-size: 10px;
   font-weight: 800;
-
   letter-spacing: 0.08em;
-
   text-transform: uppercase;
-
   cursor: pointer;
-
   overflow: hidden;
-
+  transform: none;
   transition:
     color 0.35s ease,
     border-color 0.35s ease,
     background 0.35s ease,
-    transform 0.35s ease,
     box-shadow 0.35s ease;
 }
 
-
-/* shine */
-
+/* SHINE */
 .menu-filter::before {
   content: "";
-
   position: absolute;
-
   top: 0;
   left: -120%;
-
   width: 100%;
   height: 100%;
-
   background: rgba(255, 255, 255, 0.16);
-
   transform: skewX(-20deg);
-
   transition: left 0.55s ease;
-
   pointer-events: none;
 }
 
@@ -317,91 +167,64 @@
   left: 120%;
 }
 
-
-/* hover */
-
+/* FILTER HOVER - ONLY SHINE */
 .menu-filter:hover {
-  border-color: var(--coffee-brown);
-
-  color: var(--coffee-brown);
-
-  transform: translateY(-3px);
-
-  box-shadow:
-    0 8px 20px rgba(112, 69, 31, 0.09);
+  background: transparent;
+  border-color: rgba(30, 86, 49, 0.45);
+  color: var(--dark-green);
+  transform: none;
+  box-shadow: none;
 }
 
-
-/* active */
-
+/* ACTIVE = TRANSPARENT + GREEN GLOW */
 .menu-filter.active {
-  background: var(--dark-green);
-
+  background: transparent;
   border-color: var(--dark-green);
-
-  color: var(--cream);
-
+  color: var(--dark-green);
+  transform: none;
   box-shadow:
-    0 8px 22px rgba(30, 86, 49, 0.18);
+    0 0 0 1px rgba(30, 86, 49, 0.12),
+    0 0 14px rgba(30, 86, 49, 0.18),
+    0 0 28px rgba(30, 86, 49, 0.08);
 }
-
-
-/* active hover */
 
 .menu-filter.active:hover {
-  background: var(--coffee-brown);
-
-  border-color: var(--coffee-brown);
-
-  color: var(--cream);
-
-  transform: translateY(-3px);
-
+  background: transparent;
+  border-color: var(--dark-green);
+  color: var(--dark-green);
+  transform: none;
   box-shadow:
-    0 10px 25px rgba(112, 69, 31, 0.16);
+    0 0 0 1px rgba(30, 86, 49, 0.12),
+    0 0 14px rgba(30, 86, 49, 0.18),
+    0 0 28px rgba(30, 86, 49, 0.08);
 }
 
+.menu-filter.active::before {
+  background: rgba(255, 255, 255, 0.20);
+}
 
-/* =========================================
-   ITEMS CONTAINER
-========================================= */
-
+/* ITEMS CONTAINER */
 .menu-items {
   position: relative;
   z-index: 1;
-
   width: 100%;
   max-width: 1050px;
-
   margin: 0 auto;
 }
 
-
-/* =========================================
-   ITEMS HEADER
-========================================= */
-
+/* ITEMS HEADER */
 .items-heading {
   display: flex;
-
   justify-content: space-between;
   align-items: center;
-
   padding: 0 5px 18px;
-
-  border-bottom: 1px solid rgba(30, 86, 49, 0.22);
-
-  color: var(--dark-green);
-
+  border-bottom: 1px solid rgba(154, 118, 88, 0.22);
+  color: var(--coffee-brown);
   font-family: var(--font-body);
-
   font-size: 9px;
   font-weight: 800;
-
   letter-spacing: 0.2em;
-
   text-transform: uppercase;
-
   opacity: 0.7;
 }
 
@@ -409,215 +232,119 @@
   color: var(--coffee-brown);
 }
 
-
-/* =========================================
-   ITEMS LIST
-========================================= */
-
+/* ITEMS LIST */
 .items-list {
   width: 100%;
 }
 
-
-/* =========================================
-   SINGLE ITEM
-========================================= */
-
+/* SINGLE ITEM */
 .menu-item {
   position: relative;
-
   display: grid;
-
   grid-template-columns: 50px 1fr auto;
-
   align-items: center;
-
   gap: 20px;
-
   padding: 25px 5px;
-
-  border-bottom: 1px solid rgba(30, 86, 49, 0.13);
-
-  color: var(--dark-green);
-
-  transition:
-    padding 0.35s ease,
-    background 0.35s ease,
-    border-color 0.35s ease;
+  border-bottom: 1px solid rgba(154, 118, 88, 0.18);
+  color: var(--coffee-brown);
+  background: transparent;
+  transition: none;
 }
 
-
-/* left hover line */
-
+/* REMOVE ITEM HOVER LINE */
 .menu-item::before {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  top: 0;
-
-  width: 2px;
-  height: 0;
-
-  background: var(--coffee-brown);
-
-  transition: height 0.35s ease;
+  display: none;
 }
 
-.menu-item:hover::before {
-  height: 100%;
-}
-
-
-/* hover */
-
+/* NO ITEM HOVER */
 .menu-item:hover {
-  padding-left: 16px;
-
-  background: rgba(154, 118, 88, 0.045);
-
-  border-color: rgba(154, 118, 88, 0.22);
+  padding-left: 5px;
+  background: transparent;
+  border-color: rgba(154, 118, 88, 0.18);
+  transform: none;
 }
 
-
-/* =========================================
-   ITEM NUMBER
-========================================= */
-
+/* ITEM NUMBER */
 .item-number {
   color: var(--coffee-brown);
-
   font-family: var(--font-body);
-
   font-size: 9px;
   font-weight: 700;
-
   letter-spacing: 0.08em;
-
   opacity: 0.5;
-
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease;
+  transform: none;
+  transition: none;
 }
 
 .menu-item:hover .item-number {
-  opacity: 1;
-
-  transform: translateX(3px);
+  opacity: 0.5;
+  transform: none;
 }
 
-
-/* =========================================
-   ITEM NAME
-========================================= */
-
+/* ITEM NAME */
 .menu-item h3 {
   margin: 0;
-
-  color: var(--dark-green);
-
+  color: var(--coffee-brown);
   font-family: var(--font-title);
-
   font-size: clamp(1.35rem, 2.4vw, 2rem);
-
   font-weight: 600;
-
   line-height: 1.05;
-
   text-transform: uppercase;
-
   letter-spacing: -0.025em;
-
-  transition:
-    color 0.3s ease,
-    transform 0.3s ease;
+  transform: none;
+  transition: none;
 }
 
 .menu-item:hover h3 {
   color: var(--coffee-brown);
-
-  transform: translateX(3px);
+  transform: none;
 }
 
-
-/* =========================================
-   PRICE
-========================================= */
-
+/* PRICE */
 .menu-item strong {
   color: var(--coffee-brown);
-
   font-family: var(--font-body);
-
   font-size: 12px;
-
   font-weight: 800;
-
   letter-spacing: 0.04em;
-
   white-space: nowrap;
-
-  transition:
-    transform 0.3s ease,
-    color 0.3s ease;
+  transform: none;
+  transition: none;
 }
 
 .menu-item:hover strong {
-  transform: translateX(-4px);
+  color: var(--coffee-brown);
+  transform: none;
 }
 
-
-/* =========================================
-   EMPTY STATE
-========================================= */
-
+/* EMPTY STATE */
 .menu-empty {
   padding: 90px 20px;
-
   text-align: center;
-
-  color: var(--dark-green);
+  color: var(--coffee-brown);
 }
 
 .menu-empty span {
   display: block;
-
   margin-bottom: 8px;
-
   color: var(--coffee-brown);
-
   font-family: var(--font-body);
-
   font-size: 9px;
-
   font-weight: 800;
-
   letter-spacing: 0.25em;
-
   text-transform: uppercase;
 }
 
 .menu-empty p {
   margin: 0;
-
   font-family: var(--font-title);
-
   font-size: clamp(1.4rem, 3vw, 2.2rem);
-
   font-weight: 600;
-
   opacity: 0.45;
 }
 
-
-/* =========================================
-   LARGE DESKTOP
-========================================= */
-
+/* LARGE DESKTOP */
 @media (min-width: 1200px) {
-
   .menu-page {
     padding-left: 8vw;
     padding-right: 8vw;
@@ -631,16 +358,10 @@
     padding-top: 28px;
     padding-bottom: 28px;
   }
-
 }
 
-
-/* =========================================
-   TABLET
-========================================= */
-
+/* TABLET */
 @media (max-width: 900px) {
-
   .menu-page {
     padding: 105px 5vw 90px;
   }
@@ -657,33 +378,19 @@
     margin-top: 60px;
     margin-bottom: 55px;
   }
-
 }
 
-
-/* =========================================
-   MOBILE
-========================================= */
-
+/* MOBILE */
 @media (max-width: 700px) {
-
   .menu-page {
     min-height: 100svh;
-
     padding: 90px 20px 80px;
   }
 
-
-  /* back */
-
   .menu-back {
     font-size: 9px;
-
     letter-spacing: 0.15em;
   }
-
-
-  /* header */
 
   .menu-page-header {
     margin-top: 48px;
@@ -691,15 +398,12 @@
 
   .menu-page-header > span {
     font-size: 8px;
-
     letter-spacing: 0.23em;
   }
 
   .menu-page-header h1 {
     margin-top: 17px;
-
     font-size: clamp(3.5rem, 20vw, 5.8rem);
-
     letter-spacing: -0.055em;
   }
 
@@ -707,46 +411,26 @@
     font-size: 3.2rem;
   }
 
-  .menu-title-line {
-    margin-top: 30px;
-  }
-
-
-  /* filters */
-
   .menu-filters {
     margin: 55px auto 45px;
-
     gap: 8px;
   }
 
   .menu-filter {
     padding: 10px 16px;
-
     font-size: 8px;
-
     letter-spacing: 0.045em;
   }
 
-
-  /* items heading */
-
   .items-heading {
     padding-bottom: 14px;
-
     font-size: 7px;
-
     letter-spacing: 0.13em;
   }
 
-
-  /* items */
-
   .menu-item {
     grid-template-columns: 28px 1fr auto;
-
     gap: 9px;
-
     padding: 20px 0;
   }
 
@@ -756,7 +440,6 @@
 
   .menu-item h3 {
     font-size: 1.25rem;
-
     line-height: 1.1;
   }
 
@@ -765,18 +448,12 @@
   }
 
   .menu-item:hover {
-    padding-left: 8px;
+    padding-left: 0;
   }
-
 }
 
-
-/* =========================================
-   SMALL MOBILE
-========================================= */
-
+/* SMALL MOBILE */
 @media (max-width: 420px) {
-
   .menu-page {
     padding-left: 16px;
     padding-right: 16px;
@@ -792,13 +469,11 @@
 
   .menu-filter {
     padding: 9px 13px;
-
     font-size: 8px;
   }
 
   .menu-item {
     grid-template-columns: 24px 1fr auto;
-
     gap: 7px;
   }
 
@@ -809,28 +484,17 @@
   .menu-item strong {
     font-size: 9px;
   }
-
 }
 
-
-/* =========================================
-   ACCESSIBILITY
-========================================= */
-
+/* ACCESSIBILITY */
 .menu-filter:focus-visible,
 .menu-back:focus-visible {
   outline: 1px solid var(--coffee-brown);
-
   outline-offset: 4px;
 }
 
-
-/* =========================================
-   REDUCE MOTION
-========================================= */
-
+/* REDUCE MOTION */
 @media (prefers-reduced-motion: reduce) {
-
   .menu-filter,
   .menu-item,
   .menu-back,
@@ -846,4 +510,3 @@
     padding-left: 5px;
   }
 }
-
