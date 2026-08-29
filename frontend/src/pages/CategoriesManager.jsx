@@ -21,6 +21,7 @@ function CategoriesManager() {
   const [editingCategory, setEditingCategory] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [removeImageFlag, setRemoveImageFlag] = useState(false);
 
   const [form, setForm] = useState({ name: "", parent_id: "" });
 
@@ -76,11 +77,13 @@ function CategoriesManager() {
     setError("");
     setSelectedFile(file);
     setImagePreview(URL.createObjectURL(file));
+    setRemoveImageFlag(false);
   };
 
   const removeSelectedImage = () => {
     setSelectedFile(null);
     setImagePreview(null);
+    setRemoveImageFlag(true);
     const input = document.getElementById("category-image");
     if (input) input.value = "";
   };
@@ -90,6 +93,7 @@ function CategoriesManager() {
     setForm({ name: "", parent_id: "" });
     setSelectedFile(null);
     setImagePreview(null);
+    setRemoveImageFlag(false);
     setShowForm(true);
     setError("");
   };
@@ -105,6 +109,7 @@ function CategoriesManager() {
     setImagePreview(
       category.image ? `${IMAGE_BASE_URL}${category.image}` : null
     );
+    setRemoveImageFlag(false);
     setShowForm(true);
     setError("");
   };
@@ -115,6 +120,7 @@ function CategoriesManager() {
     setEditingCategory(null);
     setSelectedFile(null);
     setImagePreview(null);
+    setRemoveImageFlag(false);
     setForm({ name: "", parent_id: "" });
     setError("");
   };
@@ -172,6 +178,7 @@ function CategoriesManager() {
       formData.append("name", form.name.trim());
       formData.append("parent_id", form.parent_id);
       if (selectedFile) formData.append("image", selectedFile);
+      if (removeImageFlag) formData.append("remove_image", "1");
 
       const response = await fetch(UPDATE_API, {
         method: "POST",
