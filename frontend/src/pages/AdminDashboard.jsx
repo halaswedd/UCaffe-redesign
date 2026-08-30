@@ -4,6 +4,7 @@ import logo from "../assets/images/ucafe-logo.png";
 
 import CategoriesManager from "./CategoriesManager";
 import ItemsManager from "./ItemsManager";
+import ImagesManager from "./ImagesManager";
 
 
 function AdminDashboard() {
@@ -507,33 +508,8 @@ const loadDashboardStats = async () => {
         {/* IMAGES - LATER */}
 
         {activePage === "images" && (
-
-          <div className="coming-soon">
-
-            <span>
-              MENU / IMAGES
-            </span>
-
-            <h2>
-              Image manager
-              <em> coming soon.</em>
-            </h2>
-
-            <p>
-              Category images will be managed
-              from this section.
-            </p>
-
-            <button
-              type="button"
-              onClick={() => goTo("dashboard")}
-            >
-              ← BACK TO DASHBOARD
-            </button>
-
-          </div>
-
-        )}
+  <ImagesManager />
+)}
 
       </main>
 

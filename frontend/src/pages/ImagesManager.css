@@ -1,0 +1,312 @@
+/* =========================================
+   IMAGES MANAGER
+   U-CAFFE ADMIN PANEL
+========================================= */
+
+.images-manager {
+  width: 100%;
+  color: #171713;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.images-manager-header {
+  padding-bottom: 35px;
+  border-bottom: 1px solid rgba(23, 23, 19, 0.13);
+}
+
+.images-manager-header > div span {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: #1e5631;
+  text-transform: uppercase;
+}
+
+.images-manager-header h2 {
+  margin: 15px 0 0;
+  font-family: "Unbounded", sans-serif;
+  font-size: clamp(2.3rem, 4vw, 4rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.images-manager-header h2 em {
+  color: #1e5631;
+  font-style: normal;
+}
+
+.images-manager-header p {
+  max-width: 320px;
+  margin: 14px 0 0;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 11px;
+  line-height: 1.7;
+  opacity: 0.55;
+}
+
+/* =========================================
+   ERROR
+========================================= */
+
+.images-error {
+  margin-top: 25px;
+  padding: 13px 16px;
+  border-left: 2px solid #9a7658;
+  border-radius: 0 8px 8px 0;
+  background: rgba(154, 118, 88, 0.08);
+  color: #6c4730;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+/* =========================================
+   LOADING / EMPTY
+========================================= */
+
+.images-loading {
+  padding: 70px 20px;
+  text-align: center;
+  color: #1e5631;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.images-empty {
+  padding: 80px 20px;
+  margin-top: 35px;
+  text-align: center;
+  border: 1px solid rgba(30, 86, 49, 0.13);
+  border-radius: 16px;
+}
+
+.images-empty span {
+  display: block;
+  margin-bottom: 10px;
+  color: #9a7658;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.images-empty p {
+  margin: 0;
+  font-family: "Unbounded", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 0.45;
+}
+
+/* =========================================
+   GRID
+========================================= */
+
+.images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 35px;
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.image-card {
+  border: 1px solid rgba(23, 23, 19, 0.1);
+  border-radius: 14px;
+  background: #fffdf9;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(23, 23, 19, 0.04);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.image-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(23, 23, 19, 0.08);
+}
+
+/* =========================================
+   PREVIEW
+========================================= */
+
+.image-card-preview {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 86, 49, 0.06);
+}
+
+.image-card-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-card-placeholder {
+  color: #9a7658;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  opacity: 0.6;
+}
+
+.image-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(23, 23, 19, 0.55);
+  color: #f6f1e8;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+/* =========================================
+   BODY
+========================================= */
+
+.image-card-body {
+  padding: 16px;
+}
+
+.image-card-body h3 {
+  margin: 0 0 14px;
+  color: #171713;
+  font-family: "Unbounded", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.image-card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.image-upload-btn {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 9px 10px;
+  border: none;
+  border-radius: 8px;
+  background: #1e5631;
+  color: #f6f1e8;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.image-upload-btn:hover {
+  background: #174426;
+  transform: translateY(-2px);
+}
+
+.image-upload-btn input[type="file"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.image-upload-btn input[type="file"]:disabled {
+  cursor: not-allowed;
+}
+
+.image-remove-btn {
+  flex: 1;
+  min-height: 36px;
+  padding: 9px 10px;
+  border: 1px solid rgba(23, 23, 19, 0.18);
+  border-radius: 8px;
+  background: transparent;
+  color: #6c4730;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.image-remove-btn:hover {
+  background: rgba(154, 118, 88, 0.1);
+  transform: translateY(-2px);
+}
+
+.image-remove-btn:disabled,
+.image-upload-btn:has(input:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+  .images-manager-header h2 {
+    font-size: 2.4rem;
+  }
+
+  .images-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+  }
+
+  .image-card-preview {
+    height: 120px;
+  }
+
+  .image-card-body {
+    padding: 12px;
+  }
+
+  .image-card-actions {
+    flex-direction: column;
+  }
+}
