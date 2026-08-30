@@ -3,13 +3,50 @@ import "./AdminDashboard.css";
 import logo from "../assets/images/ucafe-logo.png";
 
 import CategoriesManager from "./CategoriesManager";
+import ItemsManager from "./ItemsManager";
 
 
 function AdminDashboard() {
 
   const [admin, setAdmin] = useState(null);
 
+
+  /* =========================================
+   LOAD DASHBOARD STATS
+========================================= */
+
+const loadDashboardStats = async () => {
+  try {
+    setStatsLoading(true);
+
+    const [categoriesRes, itemsRes] = await Promise.all([
+      fetch("http://localhost/UCaffe-redesign/backend/categories/get.php"),
+      fetch("http://localhost/UCaffe-redesign/backend/items/get.php"),
+    ]);
+
+    const categoriesData = await categoriesRes.json();
+    const itemsData = await itemsRes.json();
+
+    setCategoryCount(
+      categoriesData.success ? (categoriesData.data || []).length : 0
+    );
+
+    setItemCount(
+      itemsData.success ? (itemsData.data || []).length : 0
+    );
+  } catch (err) {
+    console.error(err);
+    setCategoryCount(0);
+    setItemCount(0);
+  } finally {
+    setStatsLoading(false);
+  }
+};
+
   const [activePage, setActivePage] = useState("dashboard");
+  const [categoryCount, setCategoryCount] = useState(0);
+  const [itemCount, setItemCount] = useState(0);
+  const [statsLoading, setStatsLoading] = useState(true);
 
 
   /* =========================================
@@ -18,19 +55,20 @@ function AdminDashboard() {
 
   useEffect(() => {
 
-    const savedAdmin = localStorage.getItem("admin");
+  const savedAdmin = localStorage.getItem("admin");
 
-    if (!savedAdmin) {
+  if (!savedAdmin) {
 
-      window.location.href = "/admin";
+    window.location.href = "/admin";
 
-      return;
-    }
+    return;
+  }
 
-    setAdmin(JSON.parse(savedAdmin));
+  setAdmin(JSON.parse(savedAdmin));
 
-  }, []);
+  loadDashboardStats();
 
+}, []);
 
   /* =========================================
      LOGOUT
@@ -130,8 +168,8 @@ function AdminDashboard() {
             </small>
 
             <strong>
-              05
-            </strong>
+  {statsLoading ? "—" : String(categoryCount).padStart(2, "0")}
+</strong>
 
             <p>
               Menu sections
@@ -149,8 +187,8 @@ function AdminDashboard() {
             </small>
 
             <strong>
-              24
-            </strong>
+  {statsLoading ? "—" : String(itemCount).padStart(2, "0")}
+</strong>
 
             <p>
               Available items
@@ -457,36 +495,13 @@ function AdminDashboard() {
         )}
 
 
-        {/* MENU ITEMS - LATER */}
+        {/* MENU ITEMS */}
 
-        {activePage === "items" && (
+{activePage === "items" && (
 
-          <div className="coming-soon">
+  <ItemsManager />
 
-            <span>
-              MENU / ITEMS
-            </span>
-
-            <h2>
-              Menu items
-              <em> coming soon.</em>
-            </h2>
-
-            <p>
-              This section will be used to
-              manage dishes, drinks and prices.
-            </p>
-
-            <button
-              type="button"
-              onClick={() => goTo("dashboard")}
-            >
-              ← BACK TO DASHBOARD
-            </button>
-
-          </div>
-
-        )}
+)}
 
 
         {/* IMAGES - LATER */}
