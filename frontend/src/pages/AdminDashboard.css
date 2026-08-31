@@ -1162,3 +1162,152 @@
     padding-right: 15px;
   }
 }
+
+/* =========================================
+   MOBILE DASHBOARD BACK BUTTON
+========================================= */
+
+.mobile-dashboard-back {
+  display: none;
+
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 28px;
+  padding: 9px 14px 9px 10px;
+
+  border: 1px solid rgba(30, 86, 49, 0.14);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.38);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  color: #1e5631;
+
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 20px rgba(23, 23, 19, 0.04);
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* ARROW */
+
+.mobile-dashboard-back .back-arrow {
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(30, 86, 49, 0.08);
+
+  font-size: 13px;
+  font-weight: 400;
+
+  letter-spacing: 0;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* HOVER */
+
+.mobile-dashboard-back:hover {
+  background: rgba(30, 86, 49, 0.07);
+
+  border-color:
+    rgba(30, 86, 49, 0.25);
+
+  transform: translateX(-3px);
+
+  box-shadow:
+    0 10px 25px rgba(30, 86, 49, 0.08);
+}
+
+
+.mobile-dashboard-back:hover .back-arrow {
+  background: #1e5631;
+
+  color: #f6f1e8;
+
+  transform: translateX(-2px);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .mobile-dashboard-back {
+    display: inline-flex;
+  }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+
+  .mobile-dashboard-back {
+
+    margin-bottom: 22px;
+
+    padding:
+      8px 12px 8px 8px;
+
+    font-size: 6.5px;
+
+    letter-spacing: 0.16em;
+  }
+
+
+  .mobile-dashboard-back .back-arrow {
+
+    width: 23px;
+    height: 23px;
+
+    font-size: 12px;
+  }
+
+}
+
+
+/* =========================================
+   EXTRA SMALL
+========================================= */
+
+@media (max-width: 380px) {
+
+  .mobile-dashboard-back {
+
+    margin-bottom: 18px;
+
+    font-size: 6px;
+  }
+
+}

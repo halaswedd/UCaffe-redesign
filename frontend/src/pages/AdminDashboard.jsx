@@ -474,44 +474,62 @@ const loadDashboardStats = async () => {
 
 
       {/* =====================================
-         MAIN
-      ===================================== */}
+   MAIN
+===================================== */}
 
-      <main className="dashboard-main">
+<main className="dashboard-main">
 
+  {/* MOBILE BACK BUTTON */}
 
-        {/* DASHBOARD */}
+  {activePage !== "dashboard" && (
 
-        {activePage === "dashboard" && (
-          <DashboardHome />
-        )}
+    <button
+      type="button"
+      className="mobile-dashboard-back"
+      onClick={() => goTo("dashboard")}
+    >
 
+      <span className="back-arrow">
+        ←
+      </span>
 
-        {/* CATEGORIES */}
+      <span>
+        BACK TO DASHBOARD
+      </span>
 
-        {activePage === "categories" && (
+    </button>
 
-          <CategoriesManager />
-
-        )}
-
-
-        {/* MENU ITEMS */}
-
-{activePage === "items" && (
-
-  <ItemsManager />
-
-)}
+  )}
 
 
-        {/* IMAGES - LATER */}
+  {/* DASHBOARD */}
 
-        {activePage === "images" && (
-  <ImagesManager />
-)}
+  {activePage === "dashboard" && (
+    <DashboardHome />
+  )}
 
-      </main>
+
+  {/* CATEGORIES */}
+
+  {activePage === "categories" && (
+    <CategoriesManager />
+  )}
+
+
+  {/* MENU ITEMS */}
+
+  {activePage === "items" && (
+    <ItemsManager />
+  )}
+
+
+  {/* IMAGES */}
+
+  {activePage === "images" && (
+    <ImagesManager />
+  )}
+
+</main>
 
     </div>
 
