@@ -19,7 +19,7 @@ $sql = "
     FROM items i
     LEFT JOIN categories c
         ON i.category_id = c.id
-    ORDER BY i.id DESC
+    ORDER BY i.id ASC
 ";
 
 $result = $conn->query($sql);
