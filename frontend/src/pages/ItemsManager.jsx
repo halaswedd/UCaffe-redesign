@@ -268,6 +268,7 @@ function ItemsManager() {
       {/* FORM */}
 
       {showForm && (
+        <div className="item-form-overlay">
         <div className="item-form-card">
 
           <div className="item-form-header">
@@ -416,6 +417,7 @@ function ItemsManager() {
 
           </form>
 
+        </div>
         </div>
       )}
 

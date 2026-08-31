@@ -85,7 +85,7 @@
   margin: 20px 0 0;
   color: var(--dark-green);
   font-family: var(--font-title);
-  font-size: clamp(4.5rem, 11vw, 9.5rem);
+  font-size: clamp(3rem, 7vw, 6rem);
   font-weight: 700;
   line-height: 0.82;
   text-transform: uppercase;
@@ -291,7 +291,7 @@
   margin: 0;
   color: var(--coffee-brown);
   font-family: var(--font-title);
-  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   font-weight: 600;
   line-height: 1.05;
   text-transform: none;
@@ -376,7 +376,7 @@
   }
 
   .menu-page-header h1 {
-    font-size: clamp(4rem, 14vw, 8rem);
+    font-size: clamp(2.5rem, 10vw, 4.5rem);
   }
 
   .menu-filters {
@@ -408,7 +408,7 @@
 
   .menu-page-header h1 {
     margin-top: 17px;
-    font-size: clamp(3.5rem, 20vw, 5.8rem);
+    font-size: clamp(2rem, 16vw, 2.3rem);
     letter-spacing: -0.055em;
   }
 
@@ -444,7 +444,7 @@
   }
 
   .menu-item h3 {
-    font-size: 1.25rem;
+    font-size: 1rem;
     line-height: 1.1;
   }
 
@@ -465,7 +465,7 @@
   }
 
   .menu-page-header h1 {
-    font-size: 3.5rem;
+    font-size: 2rem;
   }
 
   .menu-script {
@@ -483,7 +483,7 @@
   }
 
   .menu-item h3 {
-    font-size: 1.05rem;
+    font-size: 0.75rem;
   }
 
   .menu-item strong {
