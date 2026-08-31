@@ -88,10 +88,6 @@
 
   object-fit: contain;
 
-  /*
-    Convert original logo to white
-  */
-
   filter:
     brightness(0)
     invert(1);
@@ -206,7 +202,8 @@
 
   opacity: 0.5;
 
-  transition: opacity 0.3s ease;
+  transition:
+    opacity 0.3s ease;
 }
 
 
@@ -294,7 +291,8 @@
 
 
 .dashboard-logout:hover b {
-  transform: translate(3px, -3px);
+  transform:
+    translate(3px, -3px);
 }
 
 
@@ -409,18 +407,14 @@
 }
 
 
-/*
-   Hide administrator title
-*/
+/* Hide administrator title */
 
 .dashboard-user strong {
   display: none;
 }
 
 
-/*
-   Show email / account
-*/
+/* Show email / account */
 
 .dashboard-user span {
   display: block;
@@ -453,9 +447,7 @@
 }
 
 
-/*
-   Hide third status card if present
-*/
+/* Hide third status card if present */
 
 .stat-card:nth-child(3) {
   display: none;
@@ -661,25 +653,33 @@
   overflow: hidden;
 
   transition:
-    background 0.35s ease,
-    color 0.35s ease,
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
+    background 0.45s ease,
+    color 0.45s ease,
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
 }
 
 
 .management-card > span {
+  position: relative;
+  z-index: 2;
+
   font-size: 8px;
 
   font-weight: 800;
 
   color: #1e5631;
 
-  transition: color 0.35s ease;
+  transition:
+    color 0.45s ease;
 }
 
 
 .management-card h3 {
+  position: relative;
+  z-index: 2;
+
   margin: 0;
 
   font-family: "Unbounded", sans-serif;
@@ -691,10 +691,16 @@
   line-height: 1.1;
 
   letter-spacing: -0.04em;
+
+  transition:
+    color 0.45s ease;
 }
 
 
 .management-card p {
+  position: relative;
+  z-index: 2;
+
   max-width: 170px;
 
   margin: 8px 0 0;
@@ -704,6 +710,10 @@
   line-height: 1.7;
 
   opacity: 0.5;
+
+  transition:
+    color 0.45s ease,
+    opacity 0.45s ease;
 }
 
 
@@ -712,6 +722,8 @@
 
   right: 22px;
   bottom: 20px;
+
+  z-index: 3;
 
   width: 35px;
   height: 35px;
@@ -730,38 +742,111 @@
   font-weight: 400;
 
   transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    background 0.3s ease;
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    background 0.4s ease,
+    color 0.4s ease;
+}
+
+
+/* =========================================
+   SOFT GREEN GLOW
+========================================= */
+
+.management-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  right: -80px;
+  bottom: -90px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(94, 157, 108, 0.18);
+
+  filter: blur(35px);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transform: scale(0.8);
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 
 /* =========================================
    MANAGEMENT HOVER
+   Soft / Elegant Green
 ========================================= */
 
 .management-card:hover {
-  background: #1e5631;
+  background:
+    linear-gradient(
+      135deg,
+      #1e5631 0%,
+      #286b3d 55%,
+      #34794a 100%
+    );
 
   color: #f6f1e8;
 
   transform: translateY(-6px);
 
+  border-color:
+    rgba(30, 86, 49, 0.5);
+
   box-shadow:
-    0 20px 40px rgba(30, 86, 49, 0.25);
+    0 20px 45px rgba(30, 86, 49, 0.22);
+}
+
+
+.management-card:hover::after {
+  opacity: 1;
+
+  transform: scale(1.25);
 }
 
 
 .management-card:hover > span {
+  color:
+    rgba(246, 241, 232, 0.9);
+}
+
+
+.management-card:hover h3 {
   color: #f6f1e8;
 }
 
 
-.management-card:hover b {
-  border-color:
-    rgba(246, 241, 232, 0.5);
+.management-card:hover p {
+  color:
+    rgba(246, 241, 232, 0.65);
 
-  transform: rotate(45deg);
+  opacity: 1;
+}
+
+
+.management-card:hover b {
+  background:
+    rgba(246, 241, 232, 0.12);
+
+  border-color:
+    rgba(246, 241, 232, 0.45);
+
+  color: #f6f1e8;
+
+  transform:
+    translate(2px, -2px)
+    rotate(45deg);
 }
 
 
