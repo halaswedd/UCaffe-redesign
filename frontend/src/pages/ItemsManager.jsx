@@ -453,17 +453,12 @@ function ItemsManager() {
             </div>
 
 
-            {items.map((item) => (
-
-              <div
-                className="items-table-row"
-                key={item.id}
-              >
-
-                <div className="item-name">
-                  <small>
-                    #{String(item.id).padStart(2, "0")}
-                  </small>
+           {items.map((item, index) => (
+  <div className="items-table-row" key={item.id}>
+    <div className="item-name">
+      <small>
+        #{String(index + 1).padStart(2, "0")}
+      </small>
 
                   <strong>
                     {item.name}
