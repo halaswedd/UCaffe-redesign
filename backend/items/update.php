@@ -25,6 +25,7 @@ $id = (int)($data["id"] ?? 0);
 $name = trim($data["name"] ?? "");
 $category_id = $data["category_id"] ?? "";
 $price = $data["price"] ?? "";
+$currency = strtoupper(trim($data["currency"] ?? "LL"));
 
 
 /* =========================================
@@ -100,6 +101,23 @@ if ($price < 0) {
     echo json_encode([
         "success" => false,
         "message" => "Price cannot be negative"
+    ]);
+
+    exit;
+}
+
+
+/* =========================================
+   VALIDATE CURRENCY
+========================================= */
+
+if (!in_array($currency, ["USD", "LL"], true)) {
+
+    http_response_code(400);
+
+    echo json_encode([
+        "success" => false,
+        "message" => "Currency must be USD or LL"
     ]);
 
     exit;
@@ -184,7 +202,8 @@ $stmt = $conn->prepare(
     "UPDATE items
      SET category_id = ?,
          name = ?,
-         price = ?
+         price = ?,
+         currency = ?
      WHERE id = ?"
 );
 
@@ -202,10 +221,11 @@ if (!$stmt) {
 }
 
 $stmt->bind_param(
-    "isdi",
+    "isdsi",
     $category_id,
     $name,
     $price,
+    $currency,
     $id
 );
 
@@ -223,7 +243,8 @@ if ($stmt->execute()) {
             "id" => $id,
             "category_id" => $category_id,
             "name" => $name,
-            "price" => $price
+            "price" => $price,
+            "currency" => $currency
         ]
     ]);
 

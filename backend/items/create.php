@@ -24,6 +24,7 @@ $data = json_decode(
 $name = trim($data["name"] ?? "");
 $category_id = $data["category_id"] ?? "";
 $price = $data["price"] ?? "";
+$currency = strtoupper(trim($data["currency"] ?? "LL"));
 
 
 /* =========================================
@@ -104,6 +105,35 @@ if ($price < 0) {
     exit;
 }
 
+if (!in_array($currency, ["LL", "USD"], true)) {
+
+    http_response_code(400);
+
+    echo json_encode([
+        "success" => false,
+        "message" => "Currency must be LL or USD"
+    ]);
+
+    exit;
+}
+
+
+/* =========================================
+   VALIDATE CURRENCY
+========================================= */
+
+if (!in_array($currency, ["USD", "LL"], true)) {
+
+    http_response_code(400);
+
+    echo json_encode([
+        "success" => false,
+        "message" => "Currency must be USD or LL"
+    ]);
+
+    exit;
+}
+
 
 /* =========================================
    CHECK CATEGORY EXISTS
@@ -146,9 +176,9 @@ $categoryCheck->close();
 
 $stmt = $conn->prepare(
     "INSERT INTO items
-        (category_id, name, price)
+        (category_id, name, price, currency)
      VALUES
-        (?, ?, ?)"
+        (?, ?, ?, ?)"
 );
 
 if (!$stmt) {
@@ -165,10 +195,11 @@ if (!$stmt) {
 }
 
 $stmt->bind_param(
-    "isd",
+    "isds",
     $category_id,
     $name,
-    $price
+    $price,
+    $currency
 );
 
 
@@ -185,7 +216,8 @@ if ($stmt->execute()) {
             "id" => $stmt->insert_id,
             "category_id" => $category_id,
             "name" => $name,
-            "price" => $price
+            "price" => $price,
+            "currency" => $currency
         ]
     ]);
 

@@ -7,12 +7,14 @@ header("Access-Control-Allow-Headers: Content-Type");
 
 require_once "../config/db.php";
 
+
 $sql = "
     SELECT
         i.id,
         i.category_id,
         i.name,
         i.price,
+        i.currency,
         i.created_at,
         i.updated_at,
         c.name AS category_name
@@ -21,6 +23,7 @@ $sql = "
         ON i.category_id = c.id
     ORDER BY i.id ASC
 ";
+
 
 $result = $conn->query($sql);
 
@@ -37,27 +40,41 @@ if (!$result) {
     exit;
 }
 
+
 $items = [];
+
 
 while ($row = $result->fetch_assoc()) {
 
     $items[] = [
+
         "id" => (int)$row["id"],
+
         "category_id" => $row["category_id"] !== null
             ? (int)$row["category_id"]
             : null,
+
         "name" => $row["name"],
+
         "price" => (float)$row["price"],
+
+        "currency" => $row["currency"] ?? "LL",
+
         "category_name" => $row["category_name"],
+
         "created_at" => $row["created_at"],
+
         "updated_at" => $row["updated_at"]
+
     ];
 }
+
 
 echo json_encode([
     "success" => true,
     "data" => $items
 ]);
+
 
 $conn->close();
 
