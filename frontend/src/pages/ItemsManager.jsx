@@ -472,8 +472,8 @@ function ItemsManager() {
 
 
                 <div className="item-price">
-                  ${Number(item.price).toFixed(2)}
-                </div>
+  {Number(item.price).toLocaleString("en-US")} L.L
+</div>
 
 
                 <div className="item-actions">
