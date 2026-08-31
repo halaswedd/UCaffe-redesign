@@ -48,11 +48,6 @@
 
   object-fit: contain;
 
-  /*
-    OPENING:
-    WHITE LOGO
-  */
-
   filter:
     brightness(0)
     invert(1);
@@ -74,11 +69,6 @@
   box-shadow:
     0 8px 30px rgba(23, 23, 19, 0.06);
 }
-
-
-/*
-   ORIGINAL LOGO COLOR
-*/
 
 .navbar-scrolled .nav-logo img {
   filter: none;
@@ -106,7 +96,8 @@
 
   letter-spacing: 0.2em;
 
-  transition: color 0.35s ease;
+  transition:
+    color 0.35s ease;
 }
 
 .navbar-scrolled .nav-links a {
@@ -121,11 +112,12 @@
 .menu-toggle {
   display: none;
 
-  width: 44px;
-  height: 44px;
+  width: 35px;
+  height: 35px;
 
   align-items: center;
   justify-content: center;
+
   flex-direction: column;
 
   gap: 5px;
@@ -143,6 +135,10 @@
   height: 1.5px;
 
   background: var(--dark-green);
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
 }
 
 
@@ -153,21 +149,230 @@
 @media (max-width: 600px) {
 
   .navbar {
-    height: 70px;
+    height: 60px;
     padding: 0 18px;
   }
 
+
+  /* =======================================
+     SMALLER MOBILE LOGO
+  ======================================= */
+
   .nav-logo {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
   }
+
+
+  /* =======================================
+     HIDE DESKTOP LINKS
+  ======================================= */
 
   .nav-links {
     display: none;
   }
 
+
+  /* =======================================
+     MOBILE BUTTON
+  ======================================= */
+
   .menu-toggle {
     display: flex;
+  }
+
+
+  /* =======================================
+     MOBILE DROPDOWN MENU
+     COMPACT PREMIUM GLASS
+  ======================================= */
+
+  .mobile-menu {
+    position: absolute;
+
+    top: 64px;
+    right: 18px;
+
+    width: 175px;
+
+    padding: 7px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1px;
+
+    box-sizing: border-box;
+
+    background: rgba(246, 241, 232, 0.88);
+
+    backdrop-filter:
+      blur(24px)
+      saturate(120%);
+
+    -webkit-backdrop-filter:
+      blur(24px)
+      saturate(120%);
+
+    border: 1px solid rgba(255, 255, 255, 0.65);
+
+    border-radius: 17px;
+
+    box-shadow:
+      0 15px 35px rgba(23, 23, 19, 0.11),
+      0 3px 10px rgba(23, 23, 19, 0.04);
+
+    overflow: hidden;
+
+    animation:
+      mobileMenuAppear
+      0.35s
+      cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+
+  /* =======================================
+     DROPDOWN LINKS
+  ======================================= */
+
+  .mobile-menu a {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 38px;
+
+    padding: 0 11px;
+
+    box-sizing: border-box;
+
+    color: var(--dark-green);
+
+    text-decoration: none;
+
+    font-family: "Nunito Sans", sans-serif;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+
+    border-radius: 11px;
+
+    transition:
+      background 0.25s ease,
+      transform 0.25s ease,
+      color 0.25s ease;
+  }
+
+
+  /* =======================================
+     DROPDOWN HOVER
+  ======================================= */
+
+  .mobile-menu a:hover {
+    background:
+      rgba(23, 23, 19, 0.055);
+
+    transform:
+      translateX(3px);
+
+    color:
+      var(--dark-green);
+  }
+
+
+  /* =======================================
+     TAP / ACTIVE
+  ======================================= */
+
+  .mobile-menu a:active {
+    transform:
+      scale(0.98);
+
+    background:
+      rgba(23, 23, 19, 0.08);
+  }
+
+
+  /* =======================================
+     LEFT ACCENT LINE
+  ======================================= */
+
+  .mobile-menu a::before {
+    content: "";
+
+    position: absolute;
+
+    left: 6px;
+    top: 50%;
+
+    width: 2px;
+    height: 0;
+
+    border-radius: 10px;
+
+    background:
+      var(--dark-green);
+
+    transform:
+      translateY(-50%);
+
+    transition:
+      height 0.25s ease;
+  }
+
+  .mobile-menu a:hover::before {
+    height: 16px;
+  }
+
+
+  /* =======================================
+     HAMBURGER → CLOSE
+  ======================================= */
+
+  .menu-toggle.active span:first-child {
+    transform:
+      translateY(3.25px)
+      rotate(45deg);
+  }
+
+  .menu-toggle.active span:last-child {
+    transform:
+      translateY(-3.25px)
+      rotate(-45deg);
+  }
+
+}
+
+
+/* =========================================
+   DROPDOWN ANIMATION
+========================================= */
+
+@keyframes mobileMenuAppear {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-10px)
+      scale(0.96);
+
+    transform-origin:
+      top right;
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    transform-origin:
+      top right;
   }
 
 }
@@ -180,14 +385,17 @@
 @media (max-width: 600px) {
 
   .navbar-scrolled .menu-toggle {
-    background: var(--dark-green);
+    background:
+      var(--dark-green);
   }
 
   .navbar-scrolled .menu-toggle span {
-    background: #ffffff;
+    background:
+      #ffffff;
   }
 
 }
+
 
 /* =========================================
    MENU PAGE
@@ -199,27 +407,27 @@
   opacity: 1;
 }
 
-
-/* Menu page navbar */
-
 .navbar-menu-page {
   color: var(--dark-green);
 }
 
-
-/* Navigation */
-
 .navbar-menu-page .nav-links a {
   color: var(--dark-green);
 }
-
-
-/* Hamburger */
 
 .navbar-menu-page .menu-toggle {
   background: var(--dark-green);
 }
 
 .navbar-menu-page .menu-toggle span {
+  background: var(--cream);
+}
+
+
+/* =========================================
+   KEEP X VISIBLE ON MENU PAGE
+========================================= */
+
+.navbar-menu-page .menu-toggle.active span {
   background: var(--cream);
 }
