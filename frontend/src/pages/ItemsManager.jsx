@@ -17,7 +17,7 @@ function ItemsManager() {
   const [name, setName] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [price, setPrice] = useState("");
-
+  const [currency, setCurrency] = useState("LL");
   /* =========================================
      LOAD ITEMS
   ========================================= */
@@ -69,12 +69,13 @@ function ItemsManager() {
   ========================================= */
 
   const resetForm = () => {
-    setName("");
-    setCategoryId("");
-    setPrice("");
-    setEditingItem(null);
-    setShowForm(false);
-  };
+  setName("");
+  setCategoryId("");
+  setPrice("");
+  setCurrency("LL");
+  setEditingItem(null);
+  setShowForm(false);
+};
 
   /* =========================================
      ADD ITEM
@@ -90,14 +91,15 @@ function ItemsManager() {
   ========================================= */
 
   const handleEdit = (item) => {
-    setEditingItem(item);
+  setEditingItem(item);
 
-    setName(item.name);
-    setCategoryId(item.category_id ? String(item.category_id) : "");
-    setPrice(item.price);
+  setName(item.name);
+  setCategoryId(item.category_id ? String(item.category_id) : "");
+  setPrice(item.price);
+  setCurrency(item.currency || "LL");
 
-    setShowForm(true);
-  };
+  setShowForm(true);
+};
 
   /* =========================================
      SAVE ITEM
@@ -135,11 +137,13 @@ function ItemsManager() {
             name: name.trim(),
             category_id: Number(categoryId),
             price: Number(price),
+            currency: currency,
           }
         : {
             name: name.trim(),
             category_id: Number(categoryId),
             price: Number(price),
+            currency: currency,
           };
 
       const response = await fetch(endpoint, {
@@ -361,6 +365,31 @@ function ItemsManager() {
 
               </div>
 
+              {/* CURRENCY */}
+
+<div className="form-group">
+
+  <label>
+    CURRENCY
+  </label>
+
+  <select
+    value={currency}
+    onChange={(e) => setCurrency(e.target.value)}
+  >
+
+    <option value="LL">
+      L.L
+    </option>
+
+    <option value="USD">
+      USD
+    </option>
+
+  </select>
+
+</div>
+
             </div>
 
 
@@ -472,7 +501,15 @@ function ItemsManager() {
 
 
                 <div className="item-price">
-  {Number(item.price).toLocaleString("en-US")} L.L
+
+  {item.currency === "USD"
+    ? `$${Number(item.price).toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })}`
+    : `${Number(item.price).toLocaleString("en-US")} L.L`
+  }
+
 </div>
 
 

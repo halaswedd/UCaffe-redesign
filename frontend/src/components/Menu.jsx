@@ -192,15 +192,15 @@ function Menu({ category, onBack }) {
                 className="menu-item"
                 key={item.id}
               >
-                <span className="item-number">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
+                
 
                 <h3>{item.name}</h3>
 
                 <strong>
-                  ${Number(item.price).toFixed(2)}
-                </strong>
+  {item.currency === "USD"
+    ? `$${Number(item.price).toFixed(2)}`
+    : `${Number(item.price).toLocaleString("en-US")} L.L`}
+</strong>
               </div>
             ))
           ) : (
