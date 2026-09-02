@@ -21,8 +21,8 @@ const loadDashboardStats = async () => {
     setStatsLoading(true);
 
     const [categoriesRes, itemsRes] = await Promise.all([
-      fetch("http://localhost/UCaffe-redesign/backend/categories/get.php"),
-      fetch("http://localhost/UCaffe-redesign/backend/items/get.php"),
+      fetch("https://adventurous-friendship-production-21d6.up.railway.app/categories/get.php"),
+      fetch("https://adventurous-friendship-production-21d6.up.railway.app/items/get.php"),
     ]);
 
     const categoriesData = await categoriesRes.json();

@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import './Categories.css';
 
 const API_URL =
-  'http://localhost/UCaffe-redesign/backend/categories/get.php';
+  'https://adventurous-friendship-production-21d6.up.railway.app/categories/get.php';
 
 const IMAGE_BASE_URL =
-  'http://localhost/UCaffe-redesign/backend/';
+  'https://adventurous-friendship-production-21d6.up.railway.app/';
 
 function Categories({ onCategorySelect }) {
 

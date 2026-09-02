@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import './Menu.css';
 
 const CATEGORIES_API =
-  'http://localhost/UCaffe-redesign/backend/categories/get.php';
+  'https://adventurous-friendship-production-21d6.up.railway.app/categories/get.php';
 
 const ITEMS_API =
-  'http://localhost/UCaffe-redesign/backend/items/get.php';
+  'https://adventurous-friendship-production-21d6.up.railway.app/items/get.php';
 
 function Menu({ category, onBack }) {
   const [categories, setCategories] = useState([]);

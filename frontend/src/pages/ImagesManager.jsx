@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import "./ImagesManager.css";
 
 const CATEGORIES_API =
-  "http://localhost/UCaffe-redesign/backend/categories/get.php";
+  "https://adventurous-friendship-production-21d6.up.railway.app/categories/get.php";
 const UPDATE_API =
-  "http://localhost/UCaffe-redesign/backend/categories/update.php";
+  "https://adventurous-friendship-production-21d6.up.railway.app/categories/update.php";
 const IMAGE_BASE_URL =
-  "http://localhost/UCaffe-redesign/backend/";
+  "https://adventurous-friendship-production-21d6.up.railway.app/";
 
 function ImagesManager() {
   const [categories, setCategories] = useState([]);

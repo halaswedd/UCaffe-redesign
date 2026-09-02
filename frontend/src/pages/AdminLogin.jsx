@@ -13,7 +13,7 @@ function AdminLogin() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost/UCaffe-redesign/backend/admins/login.php", {
+      const res = await fetch("https://adventurous-friendship-production-21d6.up.railway.app/admins/login.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

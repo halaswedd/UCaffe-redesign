@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import "./CategoriesManager.css";
 
 const CATEGORIES_API =
-  "http://localhost/UCaffe-redesign/backend/categories/get.php";
+  "https://adventurous-friendship-production-21d6.up.railway.app/categories/get.php";
 const CREATE_API =
-  "http://localhost/UCaffe-redesign/backend/categories/create.php";
+  "https://adventurous-friendship-production-21d6.up.railway.app/categories/create.php";
 const UPDATE_API =
-  "http://localhost/UCaffe-redesign/backend/categories/update.php";
+  "https://adventurous-friendship-production-21d6.up.railway.app/categories/update.php";
 const DELETE_API =
-  "http://localhost/UCaffe-redesign/backend/categories/delete.php";
+  "https://adventurous-friendship-production-21d6.up.railway.app/categories/delete.php";
 const IMAGE_BASE_URL =
-  "http://localhost/UCaffe-redesign/backend/";
+  "https://adventurous-friendship-production-21d6.up.railway.app/";
 
 function CategoriesManager() {
   const [categories, setCategories] = useState([]);

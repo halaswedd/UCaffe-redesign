@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./ItemsManager.css";
 
-const API = "http://localhost/UCaffe-redesign/backend";
+const API = "https://adventurous-friendship-production-21d6.up.railway.app";
 
 function ItemsManager() {
   const [items, setItems] = useState([]);
