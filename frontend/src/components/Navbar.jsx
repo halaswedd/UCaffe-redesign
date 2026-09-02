@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Navbar.css';
+import logo from '../assets/images/ucafe-logo.png';
 
 function Navbar({ menuPage = false }) {
   const [scrolled, setScrolled] = useState(false);
@@ -30,25 +31,15 @@ function Navbar({ menuPage = false }) {
 
   return (
     <header className={navbarClass}>
-      {/* LOGO */}
-      <a
-        href="/"
-        className="nav-logo"
-        aria-label="U-Cafe Home"
-      >
-        <img
-          src="/src/assets/images/ucafe-logo.png"
-          alt="U-Cafe"
-        />
+      <a href="/" className="nav-logo" aria-label="U-Cafe Home">
+        <img src={logo} alt="U-Cafe" />
       </a>
 
-      {/* DESKTOP LINKS */}
       <nav className="nav-links">
         <a href="/#menu">MENU</a>
         <a href="/#contact">CONTACT</a>
       </nav>
 
-      {/* MOBILE BUTTON */}
       <button
         className={`menu-toggle ${mobileMenuOpen ? 'active' : ''}`}
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -59,16 +50,10 @@ function Navbar({ menuPage = false }) {
         <span></span>
       </button>
 
-      {/* MOBILE MENU */}
       {mobileMenuOpen && (
         <div className="mobile-menu">
-          <a href="/#menu" onClick={handleMenuClick}>
-            MENU
-          </a>
-
-          <a href="/#contact" onClick={handleMenuClick}>
-            CONTACT
-          </a>
+          <a href="/#menu" onClick={handleMenuClick}>MENU</a>
+          <a href="/#contact" onClick={handleMenuClick}>CONTACT</a>
         </div>
       )}
     </header>
