@@ -1,12 +1,16 @@
 <?php
 
-header('Content-Type: text/plain');
+$host = getenv("DB_HOST");
+$port = getenv("DB_PORT");
+$user = getenv("DB_USER");
+$password = getenv("DB_PASSWORD");
+$database = getenv("DB_NAME");
 
-echo "DB_HOST = [" . getenv('DB_HOST') . "]\n";
-echo "DB_PORT = [" . getenv('DB_PORT') . "]\n";
-echo "DB_USER = [" . getenv('DB_USER') . "]\n";
-echo "DB_NAME = [" . getenv('DB_NAME') . "]\n";
-echo "MYSQLHOST = [" . getenv('MYSQLHOST') . "]\n";
-echo "MYSQLPORT = [" . getenv('MYSQLPORT') . "]\n";
-echo "MYSQLUSER = [" . getenv('MYSQLUSER') . "]\n";
-echo "MYSQLDATABASE = [" . getenv('MYSQLDATABASE') . "]\n";
+$conn = new mysqli($host, $user, $password, $database, $port);
+
+if ($conn->connect_error) {
+    die("DB ERROR: " . $conn->connect_error);
+}
+
+echo "✅ DATABASE CONNECTED SUCCESSFULLY!";
+?>
